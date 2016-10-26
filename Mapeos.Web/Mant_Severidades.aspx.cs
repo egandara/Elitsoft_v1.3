@@ -150,8 +150,16 @@ namespace Mapeos.Web
                     txtRefTableName.Text = ser.Ref_Table_Name;
                     txtBusinessRuleCd.Text = ser.Business_Rule_Cd.ToString();
                     txtBusinessRuleDesc.Text = ser.Business_Rule_Desc;
-                    //id quality
+                    ddlQualityTypeCd.SelectedValue = listas.IdQualityTypePorId(ser.Id_Quality_Type);
                     //ChbEstado
+                    if (ser.Estado == true)
+                    {
+                        ChbEstado.Checked = true;
+                    }
+                    else
+                    {
+                        ChbEstado.Checked = false;
+                    }
                 }
             }
         }

@@ -492,6 +492,17 @@ namespace Mapeos.Negocio
             return Id;
         }
 
+        public string IdQualityTypePorId(int idQualityType)
+        {
+            string Id = (from p in Tipo_Calidad_ReadAll()
+                      where p.Id_Quality_Type == idQualityType
+                      select p.Nombre_Calidad).Single();
+
+            return Id;
+        }
+
+
+
         //Tipo_Calidad
 
         public List<Tipo_Calidad> Tipo_Calidad_ReadAll()
