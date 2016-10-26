@@ -151,7 +151,6 @@ namespace Mapeos.Web
                     txtBusinessRuleCd.Text = ser.Business_Rule_Cd.ToString();
                     txtBusinessRuleDesc.Text = ser.Business_Rule_Desc;
                     ddlQualityTypeCd.SelectedValue = listas.IdQualityTypePorId(ser.Id_Quality_Type);
-                    //ChbEstado
                     if (ser.Estado == true)
                     {
                         ChbEstado.Checked = true;

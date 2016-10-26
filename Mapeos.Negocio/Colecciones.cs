@@ -501,8 +501,6 @@ namespace Mapeos.Negocio
             return Id;
         }
 
-
-
         //Tipo_Calidad
 
         public List<Tipo_Calidad> Tipo_Calidad_ReadAll()
