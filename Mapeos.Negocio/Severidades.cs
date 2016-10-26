@@ -77,7 +77,7 @@ namespace Mapeos.Negocio
             {
                 DALC.severidades fue = new DALC.severidades();
 
-                fue.id_severidades = Id_Severidades;
+                //fue.id_severidades = Id_Severidades;  // id_severidades debe ser auto increment
                 fue.numero_fuente = Numero_Fuente;
                 fue.data_fuente = Data;
                 fue.destination_table_name = Destination_Table_Name;

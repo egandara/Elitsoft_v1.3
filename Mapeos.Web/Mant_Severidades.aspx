@@ -34,6 +34,21 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>
+
+                    <asp:Label ID="lblIdSeveridades" runat="server" Text="Id"></asp:Label>
+
+                </td>
+                <td>
+
+                    <asp:TextBox ID="txtIdSeveridad" runat="server" CssClass="textBox" Enabled="False"></asp:TextBox>
+
+                </td>
+                <td>
+
+                    &nbsp;</td>
+            </tr>
+            <tr>
                 <td class="auto-style19">
 
                     <asp:Label ID="lblNumeroFuente" runat="server" Text="Número Fuente"></asp:Label>
@@ -58,8 +73,7 @@
                     <asp:TextBox ID="txtData" runat="server"  MaxLength="5" CssClass="textBox2" onkeypress="javascript:return solonumeros(event)" AutoPostBack="true" onpaste="return false" ></asp:TextBox>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtIdSeveridad" runat="server"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style19">

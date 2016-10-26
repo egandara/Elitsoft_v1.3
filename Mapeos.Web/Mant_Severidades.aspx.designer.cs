@@ -22,6 +22,24 @@ namespace Mapeos.Web {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
+        /// Control lblIdSeveridades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIdSeveridades;
+        
+        /// <summary>
+        /// Control txtIdSeveridad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIdSeveridad;
+        
+        /// <summary>
         /// Control lblNumeroFuente.
         /// </summary>
         /// <remarks>
@@ -65,15 +83,6 @@ namespace Mapeos.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtData;
-        
-        /// <summary>
-        /// Control txtIdSeveridad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdSeveridad;
         
         /// <summary>
         /// Control lblDestinationTableName.
