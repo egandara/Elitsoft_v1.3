@@ -1,0 +1,126 @@
+﻿body {
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.login {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    background: url('images/inputlogin.png') no-repeat left top;
+    color: Black;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+
+.textBox {
+  font-family    :  verdana, arial, snas-serif;
+  font-size      :  14px;
+  height         :  25px;
+  width          : 90px;
+  font-weight    :  bold;
+  color          :  #000000;
+  <!--padding        :  3px;-->
+  background     :  #CEE3F6;
+  border-left    :  solid 1px #c1c1c1;
+  border-top     :  solid 1px #cfcfcf;
+  border-right   :  solid 1px #cfcfcf;
+  border-bottom  :  solid 1px #6f6f6f;
+  border-color   :  #646464;
+  background-color: #CEE3F6;
+}
+
+.textBox2 {
+     font-family    :  verdana, arial, snas-serif;
+  font-size      :  12px;
+  height         :  25px;
+  width          : 185px;
+}
+
+.textBox3 {
+     font-family    :  verdana, arial, snas-serif;
+  font-size      :  12px;
+  height         :  25px;
+  width          : 15px;
+}
+
+.dropDown {
+    font-family    :  verdana, arial, snas-serif;
+  font-size      :  12px;
+  height         :  25px;
+  width          : 200px;
+}
+
+.dropDown2 {
+    font-family    :  verdana, arial, snas-serif;
+  font-size      :  12px;
+  height         :  25px;
+  width          : 300px;
+}
+
+.listBox {
+    font-family    :  verdana, arial, snas-serif;
+    font-size      :  11px;
+    width: 300px;
+}
+
+.gridView {
+    font-family    :  verdana, arial, snas-serif;
+    font-size      :  11px;
+    width          : 100%;
+     margin: 5px 0 10px 0;  
+    border: solid 1px #525252;  
+    border-collapse: collapse;
+    border-color: #DEDFDE;
+    border-style: none;
+    border-width:1px;
+    padding:4px;
+    align-content: center;
+}
+
+.header
+{
+	background-color: #646464;
+	font-family: Arial;
+	color: White;
+	border: none 0px transparent;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.button {
+    background-color: #BDBDBD; /* Green */
+    border: none;
+    color: black;
+    /*/padding: 7px 10px;*/
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    width : 75px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin: auto;
+}
+
+.button2 {
+  background: #94a0a8;
+  background-image: -webkit-linear-gradient(top, #94a0a8, #7d95a3);
+  background-image: -moz-linear-gradient(top, #94a0a8, #7d95a3);
+  background-image: -ms-linear-gradient(top, #94a0a8, #7d95a3);
+  background-image: -o-linear-gradient(top, #94a0a8, #7d95a3);
+  background-image: linear-gradient(to bottom, #94a0a8, #7d95a3);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 13px;
+  padding: 14px;
+  text-decoration: none;
+}

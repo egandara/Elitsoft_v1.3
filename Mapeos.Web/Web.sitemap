@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="Inicio.aspx" title="Inicio"  description="">
+        <siteMapNode title="Fuentes">
+          <siteMapNode url="Desc_Fuentes.aspx" title="Descripción de Fuentes" description=""/>
+          <siteMapNode url="Mant_Fuentes.aspx" title="Mantenedor de Fuentes" description=""/>
+        </siteMapNode>
+        <siteMapNode url="Estructura.aspx" title="Estructura"  description="" />
+        <siteMapNode url="Mapeo.aspx" title="Mapeo"  description="" />
+        <siteMapNode title="Severidades">
+          <siteMapNode url="Severidades.aspx" title="Listar Severidades" description=""/>
+          <siteMapNode url="Mant_Severidades.aspx" title="Mantenedor Severidades" description=""/>
+        </siteMapNode>
+        <siteMapNode url="Usuarios.aspx" title="Mantenedor de Usuarios"  description="" />
+    </siteMapNode>
+</siteMap>

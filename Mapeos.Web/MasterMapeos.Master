@@ -1,0 +1,174 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterMapeos.master.cs" Inherits="Mapeos.Web.MasterMapeos" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script language="javascript" type="text/javascript">
+        function PopUp(e) {
+            window.name = "Cambio de clave";
+            var ReturnValue = window.showModalDialog("Clave.aspx", e.paras, "dialogWidth=200px;dialogHeight=230px;scroll:no; status:no;")
+        }
+        function solonumeros(e) {
+            var key;
+            if (window.event) // IE
+            {
+                key = e.keyCode;
+            }
+            else if (e.which) // Netscape/Firefox/Opera
+            {
+                key = e.which;
+            }
+
+            if (key < 48 || key > 57) {
+                return false;
+            }
+
+            return true;
+        }
+        function solonumeros2(e) {
+
+            var key;
+
+            if (window.event) // IE
+            {
+                key = e.keyCode;
+            }
+            else if (e.which) // Netscape/Firefox/Opera
+            {
+                key = e.which;
+            }
+
+            if (key < 48 || key > 57 && key < 75 || key > 75 && key < 107 || key > 107)  {
+                return false;
+            }
+
+            return true;
+        }
+        function lbPrecedencias_DoubleClick() {
+            document.forms[0].lbPrecedenciasHidden.value = "doubleclicked";
+            document.forms[0].submit();
+        }
+        function lbDestinos_DoubleClick() {
+            document.forms[0].lbDestinosHidden.value = "doubleclicked";
+            document.forms[0].submit();
+        }
+        function lbMinors_DoubleClick() {
+            document.forms[0].lbMinorsHidden.value = "doubleclicked";
+            document.forms[0].submit();
+        }
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 181px;
+            height: 55px;
+            font-size: medium;
+        }
+        .auto-style6 {
+            width: 358px;
+        }
+        .auto-style7 {
+            text-align: right;
+        }
+        .auto-style8 {
+            font-size: medium;
+        }
+        .auto-style9 {
+            text-align: right;
+            font-size: medium;
+        }
+        .auto-style10 {
+            font-size: medium;
+            font-weight: normal;
+        }
+        .auto-style11 {
+            font-weight: normal;
+        }
+        .auto-style12 {
+            width: 362px;
+            text-align: right;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Panel ID="Panel1" runat="server" BackColor="#BDBDBD">
+            <table style="width: 100%;">
+                <tr>
+                    <td class="auto-style6">
+                        <asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : ">
+                            <CurrentNodeStyle ForeColor="#333333" />
+                            <NodeStyle Font-Bold="True" ForeColor="#7C6F57" />
+                            <PathSeparatorStyle Font-Bold="True" ForeColor="#5D7B9D" />
+                            <RootNodeStyle Font-Bold="True" ForeColor="#5D7B9D" />
+                        </asp:SiteMapPath>
+                    </td>
+                    <td class="auto-style12">&nbsp;</td>
+                    <td class="auto-style7">
+                        <b>
+                        <img alt="Logo" class="auto-style1" longdesc="Logo Elitsoft" src="Images/logo_elitsoft.jpg" />
+                        </b><span class="auto-style10"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">
+                        <asp:SiteMapDataSource ID="smdsMapeos" runat="server" />
+                        <br />
+                        <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DataSourceID="smdsMapeos" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" StaticSubMenuIndent="10px">
+                            <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#B5C7DE" />
+                            <DynamicSelectedStyle BackColor="#507CD1" />
+                            <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#507CD1" />
+                        </asp:Menu>
+                    </td>
+                    <td class="auto-style12">
+                        <asp:Label ID="lblClaveActual" runat="server" Text="Clave actual: " Visible="False"></asp:Label>
+                        <asp:TextBox ID="txtClaveActual" runat="server" TextMode="Password" Visible="False" style="text-align: left"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="lblNuevaClave" runat="server" Text="Nueva clave: " Visible="False"></asp:Label>
+                        <asp:TextBox ID="txtNuevaClave" runat="server" TextMode="Password" Visible="False" style="text-align: left"></asp:TextBox>
+                        <br />
+                        </span>
+                        <asp:Label ID="lblRepetirNuevaClave" runat="server" Text="Repetir clave: " Visible="False"></asp:Label>
+                        <asp:TextBox ID="txtRepetirNuevaClave" runat="server" TextMode="Password" Visible="False" style="text-align: left"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" Visible="False" OnClientClick="return confirm('Confirmar cambio de clave.');" OnClick="btnAceptar_Click" />
+                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Visible="False" OnClick="btnCancelar_Click" />
+                        <br />
+                    </td>
+                    <td class="auto-style9">
+                        <!-- <asp:Label ID="lblTime" runat="server" EnableTheming="True" Text="Label"></asp:Label> -->
+                        <span class="auto-style10">
+                        <br />
+                        Usuario: </span><span class="auto-style11">
+                        <asp:LoginName ID="LoginName1" runat="server" CssClass="auto-style8" />
+                        <br class="auto-style8" />
+                        </span><span class="auto-style10">Perfil: </span><span class="auto-style11">
+                        <asp:Label ID="lblTipoUsuario" runat="server" CssClass="auto-style8"></asp:Label>
+                        <br class="auto-style8" />
+                        <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="auto-style8" />
+                        <br class="auto-style8" />
+                        </span><span class="auto-style10">
+                        <asp:LinkButton ID="linkCambioPass" runat="server" CSSClass="btn" OnClick="linkCambioPass_Click" >Cambiar clave</asp:LinkButton></span><span class="auto-style11">
+                        <br class="auto-style8" />
+                        <asp:Label ID="lblMensaje" runat="server" style="font-weight: 700"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="448f5c386a3b4801a20ef2d4a33ebdd6" Name="Diagrama1">
+        <EntityTypeShape EntityType="proyectoModel.desc_fuente" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.estructura" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.extractor" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.login" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.periodicidad" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.relacion" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.severidades" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.tipo_relacion" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.tipo_usuario" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="proyectoModel.desc_fuente_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.desc_fuente_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.estructura_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.relacion_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.relacion_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.severidades_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.login_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoModel.relacion_ibfk_2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="proyectoModel.historico" Width="1.5" PointX="4.5429486225093472" PointY="5.3289037967700992" />
+        <EntityTypeShape EntityType="proyectoModel.tipo_calidad" Width="1.5" PointX="10.206981399192932" PointY="1.7147618987200604" />
+        <EntityTypeShape EntityType="proyectoModel.tipo_cambio" Width="1.5" PointX="2.2982508290085248" PointY="5.8631841567639187" />
+        <AssociationConnector Association="proyectoModel.FK_Historico_Tipo" />
+        <AssociationConnector Association="proyectoModel.historico_ibfk_1" />
+        <AssociationConnector Association="proyectoModel.severidades_ibfk_2" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

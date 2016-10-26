@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="proyectoModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="proyectoModelStoreContainer">
+          <EntitySet Name="desc_fuente" EntityType="proyectoModel.Store.desc_fuente" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="estructura" EntityType="proyectoModel.Store.estructura" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="extractor" EntityType="proyectoModel.Store.extractor" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="historico" EntityType="proyectoModel.Store.historico" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="login" EntityType="proyectoModel.Store.login" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="periodicidad" EntityType="proyectoModel.Store.periodicidad" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="relacion" EntityType="proyectoModel.Store.relacion" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="severidades" EntityType="proyectoModel.Store.severidades" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="tipo_calidad" EntityType="proyectoModel.Store.tipo_calidad" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="tipo_cambio" EntityType="proyectoModel.Store.tipo_cambio" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="tipo_relacion" EntityType="proyectoModel.Store.tipo_relacion" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="tipo_usuario" EntityType="proyectoModel.Store.tipo_usuario" store:Type="Tables" Schema="proyecto" />
+          <AssociationSet Name="desc_fuente_ibfk_1" Association="proyectoModel.Store.desc_fuente_ibfk_1">
+            <End Role="extractor" EntitySet="extractor" />
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+          </AssociationSet>
+          <AssociationSet Name="desc_fuente_ibfk_2" Association="proyectoModel.Store.desc_fuente_ibfk_2">
+            <End Role="periodicidad" EntitySet="periodicidad" />
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+          </AssociationSet>
+          <AssociationSet Name="estructura_ibfk_1" Association="proyectoModel.Store.estructura_ibfk_1">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="estructura" EntitySet="estructura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Historico_Tipo" Association="proyectoModel.Store.FK_Historico_Tipo">
+            <End Role="tipo_cambio" EntitySet="tipo_cambio" />
+            <End Role="historico" EntitySet="historico" />
+          </AssociationSet>
+          <AssociationSet Name="historico_ibfk_1" Association="proyectoModel.Store.historico_ibfk_1">
+            <End Role="login" EntitySet="login" />
+            <End Role="historico" EntitySet="historico" />
+          </AssociationSet>
+          <AssociationSet Name="login_ibfk_1" Association="proyectoModel.Store.login_ibfk_1">
+            <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_ibfk_1" Association="proyectoModel.Store.relacion_ibfk_1">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="relacion" EntitySet="relacion" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_ibfk_2" Association="proyectoModel.Store.relacion_ibfk_2">
+            <End Role="tipo_relacion" EntitySet="tipo_relacion" />
+            <End Role="relacion" EntitySet="relacion" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_ibfk_3" Association="proyectoModel.Store.relacion_ibfk_3">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="relacion" EntitySet="relacion" />
+          </AssociationSet>
+          <AssociationSet Name="severidades_ibfk_1" Association="proyectoModel.Store.severidades_ibfk_1">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="severidades" EntitySet="severidades" />
+          </AssociationSet>
+          <AssociationSet Name="severidades_ibfk_2" Association="proyectoModel.Store.severidades_ibfk_2">
+            <End Role="tipo_calidad" EntitySet="tipo_calidad" />
+            <End Role="severidades" EntitySet="severidades" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="desc_fuente">
+          <Key>
+            <PropertyRef Name="numero_fuente" />
+          </Key>
+          <Property Name="numero_fuente" Type="int" Nullable="false" />
+          <Property Name="archivo_fuente" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="sistema_fuente" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="contenido" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="cantidad_registros" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="id_extractor" Type="int" Nullable="false" />
+          <Property Name="id_periodicidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estructura">
+          <Key>
+            <PropertyRef Name="id_estructura" />
+          </Key>
+          <Property Name="id_estructura" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="tipo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="niludad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="usar" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="estado" Type="bool" Nullable="false" />
+          <Property Name="numero_fuente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="extractor">
+          <Key>
+            <PropertyRef Name="id_extractor" />
+          </Key>
+          <Property Name="id_extractor" Type="int" Nullable="false" />
+          <Property Name="nombre_extractor" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="historico">
+          <Key>
+            <PropertyRef Name="id_historico" />
+          </Key>
+          <Property Name="id_historico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora" Type="time" Nullable="false" />
+          <Property Name="rut" Type="int" Nullable="false" />
+          <Property Name="cambio" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="id_tipo_cambio" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="rut" />
+          </Key>
+          <Property Name="rut" Type="int" Nullable="false" />
+          <Property Name="dv" Type="char" MaxLength="1" />
+          <Property Name="nombre_usuario" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="usuario" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="clave" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="id_tipo_usuario" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="periodicidad">
+          <Key>
+            <PropertyRef Name="id_periodicidad" />
+          </Key>
+          <Property Name="id_periodicidad" Type="int" Nullable="false" />
+          <Property Name="nombre_periodicidad" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="relacion">
+          <Key>
+            <PropertyRef Name="id_tipo_relacion" />
+            <PropertyRef Name="numero_fuente" />
+            <PropertyRef Name="numero_fuente_relacionada" />
+          </Key>
+          <Property Name="id_tipo_relacion" Type="int" Nullable="false" />
+          <Property Name="numero_fuente" Type="int" Nullable="false" />
+          <Property Name="numero_fuente_relacionada" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="severidades">
+          <Key>
+            <PropertyRef Name="id_severidades" />
+          </Key>
+          <Property Name="id_severidades" Type="int" Nullable="false" />
+          <Property Name="data_fuente" Type="int" Nullable="false" />
+          <Property Name="destination_table_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="source_column_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="fuente_destino" Type="int" Nullable="false" />
+          <Property Name="ref_table_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ref_column_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="business" Type="int" Nullable="false" />
+          <Property Name="buss_rule_desc" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="id_quality_type" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bool" Nullable="false" />
+          <Property Name="numero_fuente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_calidad">
+          <Key>
+            <PropertyRef Name="id_quality_type" />
+          </Key>
+          <Property Name="id_quality_type" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tipo_cambio">
+          <Key>
+            <PropertyRef Name="id_tipo_cambio" />
+          </Key>
+          <Property Name="id_tipo_cambio" Type="int" Nullable="false" />
+          <Property Name="nombre_cambio" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tipo_relacion">
+          <Key>
+            <PropertyRef Name="id_tipo_relacion" />
+          </Key>
+          <Property Name="id_tipo_relacion" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="tipo_usuario">
+          <Key>
+            <PropertyRef Name="id_tipo_usuario" />
+          </Key>
+          <Property Name="id_tipo_usuario" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="desc_fuente_ibfk_1">
+          <End Role="extractor" Type="proyectoModel.Store.extractor" Multiplicity="1" />
+          <End Role="desc_fuente" Type="proyectoModel.Store.desc_fuente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="extractor">
+              <PropertyRef Name="id_extractor" />
+            </Principal>
+            <Dependent Role="desc_fuente">
+              <PropertyRef Name="id_extractor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="desc_fuente_ibfk_2">
+          <End Role="periodicidad" Type="proyectoModel.Store.periodicidad" Multiplicity="1" />
+          <End Role="desc_fuente" Type="proyectoModel.Store.desc_fuente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodicidad">
+              <PropertyRef Name="id_periodicidad" />
+            </Principal>
+            <Dependent Role="desc_fuente">
+              <PropertyRef Name="id_periodicidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="estructura_ibfk_1">
+          <End Role="desc_fuente" Type="proyectoModel.Store.desc_fuente" Multiplicity="1" />
+          <End Role="estructura" Type="proyectoModel.Store.estructura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="estructura">
+              <PropertyRef Name="numero_fuente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Historico_Tipo">
+          <End Role="tipo_cambio" Type="proyectoModel.Store.tipo_cambio" Multiplicity="1" />
+          <End Role="historico" Type="proyectoModel.Store.historico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_cambio">
+              <PropertyRef Name="id_tipo_cambio" />
+            </Principal>
+            <Dependent Role="historico">
+              <PropertyRef Name="id_tipo_cambio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="historico_ibfk_1">
+          <End Role="login" Type="proyectoModel.Store.login" Multiplicity="1" />
+          <End Role="historico" Type="proyectoModel.Store.historico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="rut" />
+            </Principal>
+            <Dependent Role="historico">
+              <PropertyRef Name="rut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_ibfk_1">
+          <End Role="tipo_usuario" Type="proyectoModel.Store.tipo_usuario" Multiplicity="1" />
+          <End Role="login" Type="proyectoModel.Store.login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuario">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_ibfk_1">
+          <End Role="desc_fuente" Type="proyectoModel.Store.desc_fuente" Multiplicity="1" />
+          <End Role="relacion" Type="proyectoModel.Store.relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="relacion">
+              <PropertyRef Name="numero_fuente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_ibfk_2">
+          <End Role="tipo_relacion" Type="proyectoModel.Store.tipo_relacion" Multiplicity="1" />
+          <End Role="relacion" Type="proyectoModel.Store.relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_relacion">
+              <PropertyRef Name="id_tipo_relacion" />
+            </Principal>
+            <Dependent Role="relacion">
+              <PropertyRef Name="id_tipo_relacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_ibfk_3">
+          <End Role="desc_fuente" Type="proyectoModel.Store.desc_fuente" Multiplicity="1" />
+          <End Role="relacion" Type="proyectoModel.Store.relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="relacion">
+              <PropertyRef Name="numero_fuente_relacionada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="severidades_ibfk_1">
+          <End Role="desc_fuente" Type="proyectoModel.Store.desc_fuente" Multiplicity="1" />
+          <End Role="severidades" Type="proyectoModel.Store.severidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="severidades">
+              <PropertyRef Name="numero_fuente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="severidades_ibfk_2">
+          <End Role="tipo_calidad" Type="proyectoModel.Store.tipo_calidad" Multiplicity="1" />
+          <End Role="severidades" Type="proyectoModel.Store.severidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_calidad">
+              <PropertyRef Name="id_quality_type" />
+            </Principal>
+            <Dependent Role="severidades">
+              <PropertyRef Name="id_quality_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="proyectoModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MapeoEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="desc_fuente" EntityType="proyectoModel.desc_fuente" />
+          <EntitySet Name="estructura" EntityType="proyectoModel.estructura" />
+          <EntitySet Name="extractor" EntityType="proyectoModel.extractor" />
+          <EntitySet Name="login" EntityType="proyectoModel.login" />
+          <EntitySet Name="periodicidad" EntityType="proyectoModel.periodicidad" />
+          <EntitySet Name="relacion" EntityType="proyectoModel.relacion" />
+          <EntitySet Name="severidades" EntityType="proyectoModel.severidades" />
+          <EntitySet Name="tipo_relacion" EntityType="proyectoModel.tipo_relacion" />
+          <EntitySet Name="tipo_usuario" EntityType="proyectoModel.tipo_usuario" />
+          <AssociationSet Name="desc_fuente_ibfk_1" Association="proyectoModel.desc_fuente_ibfk_1">
+            <End Role="extractor" EntitySet="extractor" />
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+          </AssociationSet>
+          <AssociationSet Name="desc_fuente_ibfk_2" Association="proyectoModel.desc_fuente_ibfk_2">
+            <End Role="periodicidad" EntitySet="periodicidad" />
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+          </AssociationSet>
+          <AssociationSet Name="estructura_ibfk_1" Association="proyectoModel.estructura_ibfk_1">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="estructura" EntitySet="estructura" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_ibfk_1" Association="proyectoModel.relacion_ibfk_1">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="relacion" EntitySet="relacion" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_ibfk_3" Association="proyectoModel.relacion_ibfk_3">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="relacion" EntitySet="relacion" />
+          </AssociationSet>
+          <AssociationSet Name="severidades_ibfk_1" Association="proyectoModel.severidades_ibfk_1">
+            <End Role="desc_fuente" EntitySet="desc_fuente" />
+            <End Role="severidades" EntitySet="severidades" />
+          </AssociationSet>
+          <AssociationSet Name="login_ibfk_1" Association="proyectoModel.login_ibfk_1">
+            <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_ibfk_2" Association="proyectoModel.relacion_ibfk_2">
+            <End Role="tipo_relacion" EntitySet="tipo_relacion" />
+            <End Role="relacion" EntitySet="relacion" />
+          </AssociationSet>
+          <EntitySet Name="historico" EntityType="proyectoModel.historico" />
+          <EntitySet Name="tipo_calidad" EntityType="proyectoModel.tipo_calidad" />
+          <EntitySet Name="tipo_cambio" EntityType="proyectoModel.tipo_cambio" />
+          <AssociationSet Name="FK_Historico_Tipo" Association="proyectoModel.FK_Historico_Tipo">
+            <End Role="tipo_cambio" EntitySet="tipo_cambio" />
+            <End Role="historico" EntitySet="historico" />
+          </AssociationSet>
+          <AssociationSet Name="historico_ibfk_1" Association="proyectoModel.historico_ibfk_1">
+            <End Role="login" EntitySet="login" />
+            <End Role="historico" EntitySet="historico" />
+          </AssociationSet>
+          <AssociationSet Name="severidades_ibfk_2" Association="proyectoModel.severidades_ibfk_2">
+            <End Role="tipo_calidad" EntitySet="tipo_calidad" />
+            <End Role="severidades" EntitySet="severidades" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="desc_fuente">
+          <Key>
+            <PropertyRef Name="numero_fuente" />
+          </Key>
+          <Property Name="numero_fuente" Type="Int32" Nullable="false" />
+          <Property Name="archivo_fuente" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="sistema_fuente" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="contenido" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="cantidad_registros" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="id_extractor" Type="Int32" Nullable="false" />
+          <Property Name="id_periodicidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="extractor" Relationship="proyectoModel.desc_fuente_ibfk_1" FromRole="desc_fuente" ToRole="extractor" />
+          <NavigationProperty Name="periodicidad" Relationship="proyectoModel.desc_fuente_ibfk_2" FromRole="desc_fuente" ToRole="periodicidad" />
+          <NavigationProperty Name="estructura" Relationship="proyectoModel.estructura_ibfk_1" FromRole="desc_fuente" ToRole="estructura" />
+          <NavigationProperty Name="relacion" Relationship="proyectoModel.relacion_ibfk_1" FromRole="desc_fuente" ToRole="relacion" />
+          <NavigationProperty Name="relacion1" Relationship="proyectoModel.relacion_ibfk_3" FromRole="desc_fuente" ToRole="relacion" />
+          <NavigationProperty Name="severidades" Relationship="proyectoModel.severidades_ibfk_1" FromRole="desc_fuente" ToRole="severidades" />
+        </EntityType>
+        <EntityType Name="estructura">
+          <Key>
+            <PropertyRef Name="id_estructura" />
+          </Key>
+          <Property Name="id_estructura" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="niludad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="usar" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="numero_fuente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="desc_fuente" Relationship="proyectoModel.estructura_ibfk_1" FromRole="estructura" ToRole="desc_fuente" />
+        </EntityType>
+        <EntityType Name="extractor">
+          <Key>
+            <PropertyRef Name="id_extractor" />
+          </Key>
+          <Property Name="id_extractor" Type="Int32" Nullable="false" />
+          <Property Name="nombre_extractor" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="desc_fuente" Relationship="proyectoModel.desc_fuente_ibfk_1" FromRole="extractor" ToRole="desc_fuente" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="rut" />
+          </Key>
+          <Property Name="rut" Type="Int32" Nullable="false" />
+          <Property Name="dv" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="nombre_usuario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="clave" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tipo_usuario" Relationship="proyectoModel.login_ibfk_1" FromRole="login" ToRole="tipo_usuario" />
+          <NavigationProperty Name="historico" Relationship="proyectoModel.historico_ibfk_1" FromRole="login" ToRole="historico" />
+        </EntityType>
+        <EntityType Name="periodicidad">
+          <Key>
+            <PropertyRef Name="id_periodicidad" />
+          </Key>
+          <Property Name="id_periodicidad" Type="Int32" Nullable="false" />
+          <Property Name="nombre_periodicidad" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="desc_fuente" Relationship="proyectoModel.desc_fuente_ibfk_2" FromRole="periodicidad" ToRole="desc_fuente" />
+        </EntityType>
+        <EntityType Name="relacion">
+          <Key>
+            <PropertyRef Name="id_tipo_relacion" />
+            <PropertyRef Name="numero_fuente" />
+            <PropertyRef Name="numero_fuente_relacionada" />
+          </Key>
+          <Property Name="id_tipo_relacion" Type="Int32" Nullable="false" />
+          <Property Name="numero_fuente" Type="Int32" Nullable="false" />
+          <Property Name="numero_fuente_relacionada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="desc_fuente" Relationship="proyectoModel.relacion_ibfk_1" FromRole="relacion" ToRole="desc_fuente" />
+          <NavigationProperty Name="desc_fuente1" Relationship="proyectoModel.relacion_ibfk_3" FromRole="relacion" ToRole="desc_fuente" />
+          <NavigationProperty Name="tipo_relacion" Relationship="proyectoModel.relacion_ibfk_2" FromRole="relacion" ToRole="tipo_relacion" />
+        </EntityType>
+        <EntityType Name="severidades">
+          <Key>
+            <PropertyRef Name="id_severidades" />
+          </Key>
+          <Property Name="id_severidades" Type="Int32" Nullable="false" />
+          <Property Name="business" Type="Int32" Nullable="false" />
+          <Property Name="buss_rule_desc" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="data_fuente" Type="Int32" Nullable="false" />
+          <Property Name="destination_table_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="source_column_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ref_table_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ref_column_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="numero_fuente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="desc_fuente" Relationship="proyectoModel.severidades_ibfk_1" FromRole="severidades" ToRole="desc_fuente" />
+          <Property Type="Int32" Name="fuente_destino" Nullable="false" />
+          <Property Type="Int32" Name="id_quality_type" Nullable="false" />
+          <NavigationProperty Name="tipo_calidad" Relationship="proyectoModel.severidades_ibfk_2" FromRole="severidades" ToRole="tipo_calidad" />
+        </EntityType>
+        <EntityType Name="tipo_relacion">
+          <Key>
+            <PropertyRef Name="id_tipo_relacion" />
+          </Key>
+          <Property Name="id_tipo_relacion" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="relacion" Relationship="proyectoModel.relacion_ibfk_2" FromRole="tipo_relacion" ToRole="relacion" />
+        </EntityType>
+        <EntityType Name="tipo_usuario">
+          <Key>
+            <PropertyRef Name="id_tipo_usuario" />
+          </Key>
+          <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="login" Relationship="proyectoModel.login_ibfk_1" FromRole="tipo_usuario" ToRole="login" />
+        </EntityType>
+        <Association Name="desc_fuente_ibfk_1">
+          <End Role="extractor" Type="proyectoModel.extractor" Multiplicity="1" />
+          <End Role="desc_fuente" Type="proyectoModel.desc_fuente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="extractor">
+              <PropertyRef Name="id_extractor" />
+            </Principal>
+            <Dependent Role="desc_fuente">
+              <PropertyRef Name="id_extractor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="desc_fuente_ibfk_2">
+          <End Role="periodicidad" Type="proyectoModel.periodicidad" Multiplicity="1" />
+          <End Role="desc_fuente" Type="proyectoModel.desc_fuente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodicidad">
+              <PropertyRef Name="id_periodicidad" />
+            </Principal>
+            <Dependent Role="desc_fuente">
+              <PropertyRef Name="id_periodicidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="estructura_ibfk_1">
+          <End Role="desc_fuente" Type="proyectoModel.desc_fuente" Multiplicity="1" />
+          <End Role="estructura" Type="proyectoModel.estructura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="estructura">
+              <PropertyRef Name="numero_fuente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_ibfk_1">
+          <End Role="desc_fuente" Type="proyectoModel.desc_fuente" Multiplicity="1" />
+          <End Role="relacion" Type="proyectoModel.relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="relacion">
+              <PropertyRef Name="numero_fuente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_ibfk_3">
+          <End Role="desc_fuente" Type="proyectoModel.desc_fuente" Multiplicity="1" />
+          <End Role="relacion" Type="proyectoModel.relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="relacion">
+              <PropertyRef Name="numero_fuente_relacionada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="severidades_ibfk_1">
+          <End Role="desc_fuente" Type="proyectoModel.desc_fuente" Multiplicity="1" />
+          <End Role="severidades" Type="proyectoModel.severidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desc_fuente">
+              <PropertyRef Name="numero_fuente" />
+            </Principal>
+            <Dependent Role="severidades">
+              <PropertyRef Name="numero_fuente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_ibfk_1">
+          <End Role="tipo_usuario" Type="proyectoModel.tipo_usuario" Multiplicity="1" />
+          <End Role="login" Type="proyectoModel.login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuario">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_ibfk_2">
+          <End Role="tipo_relacion" Type="proyectoModel.tipo_relacion" Multiplicity="1" />
+          <End Role="relacion" Type="proyectoModel.relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_relacion">
+              <PropertyRef Name="id_tipo_relacion" />
+            </Principal>
+            <Dependent Role="relacion">
+              <PropertyRef Name="id_tipo_relacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="historico">
+          <Key>
+            <PropertyRef Name="id_historico" />
+          </Key>
+          <Property Type="Int32" Name="id_historico" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" Precision="0" />
+          <Property Type="Time" Name="hora" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="rut" Nullable="false" />
+          <Property Type="String" Name="cambio" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_tipo_cambio" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tipo_cambio" Relationship="proyectoModel.FK_Historico_Tipo" FromRole="historico" ToRole="tipo_cambio" />
+          <NavigationProperty Name="login" Relationship="proyectoModel.historico_ibfk_1" FromRole="historico" ToRole="login" />
+        </EntityType>
+        <EntityType Name="tipo_calidad">
+          <Key>
+            <PropertyRef Name="id_quality_type" />
+          </Key>
+          <Property Type="Int32" Name="id_quality_type" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="severidades" Relationship="proyectoModel.severidades_ibfk_2" FromRole="tipo_calidad" ToRole="severidades" />
+        </EntityType>
+        <EntityType Name="tipo_cambio">
+          <Key>
+            <PropertyRef Name="id_tipo_cambio" />
+          </Key>
+          <Property Type="Int32" Name="id_tipo_cambio" Nullable="false" />
+          <Property Type="String" Name="nombre_cambio" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="historico" Relationship="proyectoModel.FK_Historico_Tipo" FromRole="tipo_cambio" ToRole="historico" />
+        </EntityType>
+        <Association Name="FK_Historico_Tipo">
+          <End Type="proyectoModel.tipo_cambio" Role="tipo_cambio" Multiplicity="1" />
+          <End Type="proyectoModel.historico" Role="historico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_cambio">
+              <PropertyRef Name="id_tipo_cambio" />
+            </Principal>
+            <Dependent Role="historico">
+              <PropertyRef Name="id_tipo_cambio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="historico_ibfk_1">
+          <End Type="proyectoModel.login" Role="login" Multiplicity="1" />
+          <End Type="proyectoModel.historico" Role="historico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="rut" />
+            </Principal>
+            <Dependent Role="historico">
+              <PropertyRef Name="rut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="severidades_ibfk_2">
+          <End Type="proyectoModel.tipo_calidad" Role="tipo_calidad" Multiplicity="1" />
+          <End Type="proyectoModel.severidades" Role="severidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_calidad">
+              <PropertyRef Name="id_quality_type" />
+            </Principal>
+            <Dependent Role="severidades">
+              <PropertyRef Name="id_quality_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="proyectoModelStoreContainer" CdmEntityContainer="MapeoEntities">
+          <EntitySetMapping Name="desc_fuente">
+            <EntityTypeMapping TypeName="proyectoModel.desc_fuente">
+              <MappingFragment StoreEntitySet="desc_fuente">
+                <ScalarProperty Name="numero_fuente" ColumnName="numero_fuente" />
+                <ScalarProperty Name="archivo_fuente" ColumnName="archivo_fuente" />
+                <ScalarProperty Name="sistema_fuente" ColumnName="sistema_fuente" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="cantidad_registros" ColumnName="cantidad_registros" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_extractor" ColumnName="id_extractor" />
+                <ScalarProperty Name="id_periodicidad" ColumnName="id_periodicidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estructura">
+            <EntityTypeMapping TypeName="proyectoModel.estructura">
+              <MappingFragment StoreEntitySet="estructura">
+                <ScalarProperty Name="id_estructura" ColumnName="id_estructura" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="niludad" ColumnName="niludad" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="usar" ColumnName="usar" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_fuente" ColumnName="numero_fuente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="extractor">
+            <EntityTypeMapping TypeName="proyectoModel.extractor">
+              <MappingFragment StoreEntitySet="extractor">
+                <ScalarProperty Name="id_extractor" ColumnName="id_extractor" />
+                <ScalarProperty Name="nombre_extractor" ColumnName="nombre_extractor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="login">
+            <EntityTypeMapping TypeName="proyectoModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="rut" ColumnName="rut" />
+                <ScalarProperty Name="dv" ColumnName="dv" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="periodicidad">
+            <EntityTypeMapping TypeName="proyectoModel.periodicidad">
+              <MappingFragment StoreEntitySet="periodicidad">
+                <ScalarProperty Name="id_periodicidad" ColumnName="id_periodicidad" />
+                <ScalarProperty Name="nombre_periodicidad" ColumnName="nombre_periodicidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="relacion">
+            <EntityTypeMapping TypeName="proyectoModel.relacion">
+              <MappingFragment StoreEntitySet="relacion">
+                <ScalarProperty Name="id_tipo_relacion" ColumnName="id_tipo_relacion" />
+                <ScalarProperty Name="numero_fuente" ColumnName="numero_fuente" />
+                <ScalarProperty Name="numero_fuente_relacionada" ColumnName="numero_fuente_relacionada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="severidades">
+            <EntityTypeMapping TypeName="proyectoModel.severidades">
+              <MappingFragment StoreEntitySet="severidades">
+                <ScalarProperty Name="id_quality_type" ColumnName="id_quality_type" />
+                <ScalarProperty Name="fuente_destino" ColumnName="fuente_destino" />
+                <ScalarProperty Name="id_severidades" ColumnName="id_severidades" />
+                <ScalarProperty Name="business" ColumnName="business" />
+                <ScalarProperty Name="buss_rule_desc" ColumnName="buss_rule_desc" />
+                <ScalarProperty Name="data_fuente" ColumnName="data_fuente" />
+                <ScalarProperty Name="destination_table_name" ColumnName="destination_table_name" />
+                <ScalarProperty Name="source_column_name" ColumnName="source_column_name" />
+                <ScalarProperty Name="ref_table_name" ColumnName="ref_table_name" />
+                <ScalarProperty Name="ref_column_name" ColumnName="ref_column_name" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_fuente" ColumnName="numero_fuente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_relacion">
+            <EntityTypeMapping TypeName="proyectoModel.tipo_relacion">
+              <MappingFragment StoreEntitySet="tipo_relacion">
+                <ScalarProperty Name="id_tipo_relacion" ColumnName="id_tipo_relacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_usuario">
+            <EntityTypeMapping TypeName="proyectoModel.tipo_usuario">
+              <MappingFragment StoreEntitySet="tipo_usuario">
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historico">
+            <EntityTypeMapping TypeName="proyectoModel.historico">
+              <MappingFragment StoreEntitySet="historico">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_tipo_cambio" ColumnName="id_tipo_cambio" />
+                <ScalarProperty Name="cambio" ColumnName="cambio" />
+                <ScalarProperty Name="rut" ColumnName="rut" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_historico" ColumnName="id_historico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_calidad">
+            <EntityTypeMapping TypeName="proyectoModel.tipo_calidad">
+              <MappingFragment StoreEntitySet="tipo_calidad">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_quality_type" ColumnName="id_quality_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_cambio">
+            <EntityTypeMapping TypeName="proyectoModel.tipo_cambio">
+              <MappingFragment StoreEntitySet="tipo_cambio">
+                <ScalarProperty Name="nombre_cambio" ColumnName="nombre_cambio" />
+                <ScalarProperty Name="id_tipo_cambio" ColumnName="id_tipo_cambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Predeterminado" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
