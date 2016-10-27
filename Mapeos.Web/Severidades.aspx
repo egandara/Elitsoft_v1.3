@@ -2,15 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Estilos/Estilos.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        .auto-style14 {
-            width: 260px;
-        }
         .auto-style15 {
             width: 275px;
-        }
-        .auto-style16 {
-            width: 274px;
-            height: 23px;
         }
         .auto-style17 {
             width: 275px;
@@ -51,12 +44,12 @@
             </tr>
             <tr>
                 <td class="auto-style20"></td>
-                <td class="auto-style17"></td>
+                <td class="auto-style17">&nbsp;</td>
                 <td class="auto-style18"></td>
             </tr>
             <tr>
                 <td class="auto-style19">
-                    <asp:GridView ID="gvSeveridad" CssClass="gridView" runat="server" AllowPaging="True" OnSelectedIndexChanged="gvSeveridad_SelectedIndexChanged">
+                    <asp:GridView ID="gvSeveridad" CssClass="gridView" runat="server" AllowPaging="True" OnSelectedIndexChanged="gvSeveridad_SelectedIndexChanged" OnRowCreated="gvSeveridad_RowCreated">
                         <Columns>
                             <asp:TemplateField ShowHeader="False">
                                 <ItemTemplate>

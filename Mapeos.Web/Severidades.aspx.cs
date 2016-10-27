@@ -76,6 +76,15 @@ namespace Mapeos.Web
             txtBuscarSeveridades.Text = string.Empty;
         }
 
+        protected void gvSeveridad_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            foreach (TableRow row in gvSeveridad.Controls[0].Controls)
+            {
+                row.Cells[1].Visible = false;
+                row.Cells[2].Visible = false;
+            }
+        }
+
        
     }
 }
