@@ -141,7 +141,7 @@
           <Key>
             <PropertyRef Name="id_severidades" />
           </Key>
-          <Property Name="id_severidades" Type="int" Nullable="false" />
+          <Property Name="id_severidades" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="data_fuente" Type="int" Nullable="false" />
           <Property Name="destination_table_name" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="source_column_name" Type="varchar" Nullable="false" MaxLength="100" />
