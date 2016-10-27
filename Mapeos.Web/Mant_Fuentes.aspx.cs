@@ -33,8 +33,6 @@ namespace Mapeos.Web
                     string previousPageUrl = Request.UrlReferrer.AbsoluteUri;
                     string previousPageName = System.IO.Path.GetFileName(Request.UrlReferrer.AbsolutePath);
 
-                    //lblMensaje.Text = previousPageName;
-
                     if (previousPageName == "Desc_Fuentes.aspx")
                     {
                         CargarDdl();

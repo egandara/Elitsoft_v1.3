@@ -22,10 +22,36 @@ namespace Mapeos.Web
         {
             if (!IsPostBack)
             {
+                if (Request.UrlReferrer != null)
+                {
+                    string previousPageUrl = Request.UrlReferrer.AbsoluteUri;
+                    string previousPageName = System.IO.Path.GetFileName(Request.UrlReferrer.AbsolutePath);
+
+                    if (previousPageName == "Severidades.aspx")
+                    {
+                        CargarDdl();
+                        CargaFromTabla();
+                        txtNumeroFuente.Focus();
+                    }
+                    else
+                    {
+                        LimpiarControles();
+                        txtNumeroFuente.Text = string.Empty;
+                        previousPageUrl = Request.UrlReferrer.AbsoluteUri;
+                        previousPageName = System.IO.Path.GetFileName(Request.UrlReferrer.AbsolutePath);
+                        CargarDdl();
+                        txtNumeroFuente.Focus();
+                    }
+                }
+            }
+            /*
+            if (!IsPostBack)
+            {
                 CargarDdl();
                 LimpiarControles();
                 CargaFromTabla();
             }
+             * */
         }
 
         private void CargarDdl()
