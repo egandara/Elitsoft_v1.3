@@ -36,12 +36,12 @@
             <tr>
                 <td>
 
-                    <asp:Label ID="lblIdSeveridades" runat="server" Text="Id"></asp:Label>
+                    <asp:Label ID="lblIdSeveridades" runat="server" Text="Id" Visible="False"></asp:Label>
 
                 </td>
                 <td>
 
-                    <asp:TextBox ID="txtIdSeveridad" runat="server" CssClass="textBox" Enabled="False"></asp:TextBox>
+                    <asp:TextBox ID="txtIdSeveridad" runat="server" CssClass="textBox" Enabled="False" Visible="False"></asp:TextBox>
 
                 </td>
                 <td>
