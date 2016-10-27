@@ -44,14 +44,6 @@ namespace Mapeos.Web
                     }
                 }
             }
-            /*
-            if (!IsPostBack)
-            {
-                CargarDdl();
-                LimpiarControles();
-                CargaFromTabla();
-            }
-             * */
         }
 
         private void CargarDdl()
@@ -102,7 +94,8 @@ namespace Mapeos.Web
             {
                 Negocio.Severidades sev = new Negocio.Severidades()
                 {
-                    Numero_Fuente = int.Parse(txtNumeroFuente.Text)
+                    Id_Severidades = int.Parse(txtIdSeveridad.Text)
+                    ,Numero_Fuente = int.Parse(txtNumeroFuente.Text)
                     ,Data = int.Parse(txtData.Text)
                     ,Destination_Table_Name = txtDestionTableName.Text
                     ,Source_Column_Name = txtSourceColumnName.Text
@@ -111,14 +104,14 @@ namespace Mapeos.Web
                     ,Ref_Column_Name = txtRefColumnName.Text
                     ,Business_Rule_Cd = int.Parse(txtBusinessRuleCd.Text)
                     ,Business_Rule_Desc = txtBusinessRuleDesc.Text
-                    ,Id_Quality_Type = listas.IdPeriodicidadPorNombre(ddlQualityTypeCd.SelectedValue.ToString())
+                    ,Id_Quality_Type = listas.IdQualityTypePorNombre(ddlQualityTypeCd.SelectedValue.ToString())
                     ,Estado = ChbEstado.Checked
                     
                 };
                 if (sev.Update())
                 {
                     LimpiarControles();
-                    lblMensaje.Text = "Severidad para el N° de fuente: " + txtNumeroFuente.Text + ", actualizada correctamente.";
+                    lblMensaje.Text = "Severidad para el N° de fuente: " + sev.Numero_Fuente + ", actualizada correctamente.";
                 }
                 else
                 {
@@ -127,7 +120,7 @@ namespace Mapeos.Web
             }
             catch(Exception ex)
             {
-                lblMensaje.Text = "Error al actulizar la severidad.";
+                lblMensaje.Text = "Error al actulizar la severidad." + ex;
             }
         }
 
@@ -188,6 +181,7 @@ namespace Mapeos.Web
                     {
                         ChbEstado.Checked = false;
                     }
+                    btAgregar.Enabled = false;
                 }
             }
         }

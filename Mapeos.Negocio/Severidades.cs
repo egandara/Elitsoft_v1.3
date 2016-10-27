@@ -97,7 +97,6 @@ namespace Mapeos.Negocio
             catch(Exception ex)
             {
                 return false;
-
             }           
             
         }
