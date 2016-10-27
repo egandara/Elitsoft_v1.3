@@ -120,21 +120,42 @@ namespace Mapeos.Web
             }
             catch(Exception ex)
             {
-                lblMensaje.Text = "Error al actulizar la severidad." + ex;
+                lblMensaje.Text = "Error al actulizar la severidad.";
             }
         }
 
-        protected void btEliminar_Click(object sender, EventArgs e)
+        protected void btCambiar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            try {
+                Negocio.Severidades sev = new Negocio.Severidades()
+                {
+                    Id_Severidades = int.Parse(txtIdSeveridad.Text)
+                };
+                if (sev.Read())
+                {
+                    if (sev.CambiarEstado())
+                    {
+                        lblMensaje.Text = "Severidad para el N° de fuente: " + sev.Numero_Fuente + ", cambio correctamente.";
+                    }
+                    else
+                    {
+                        lblMensaje.Text = "No puede cambiar el estado de la severidad.";
+                    }
+                }
+                else
+                {
+                    lblMensaje.Text = "No puede leer la severidad.";
+                }
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                lblMensaje.Text = "Error al eliminar la severidad.";
+                lblMensaje.Text = "Error al cambiar estado de la severidad.";
             }
+
         }
+
 
         private void LimpiarControles()
         {
@@ -186,5 +207,6 @@ namespace Mapeos.Web
             }
         }
 
+        
     }
 }

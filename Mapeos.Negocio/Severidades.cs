@@ -98,7 +98,6 @@ namespace Mapeos.Negocio
             {
                 return false;
             }           
-            
         }
 
         public bool Update()
@@ -133,8 +132,8 @@ namespace Mapeos.Negocio
         {
             try
             {
-                DALC.severidades fue = CommonBC.Modelo.severidades.First(f => f.id_severidades == Id_Severidades);
-                CommonBC.Modelo.severidades.DeleteObject(fue);
+                DALC.severidades ser = CommonBC.Modelo.severidades.First(f => f.id_severidades == Id_Severidades);
+                CommonBC.Modelo.severidades.DeleteObject(ser);
                 CommonBC.Modelo.SaveChanges();
 
                 return true;
@@ -142,9 +141,30 @@ namespace Mapeos.Negocio
             {
                 return false;
             }
-
         }
 
+        public bool CambiarEstado()
+        {
+            try
+            {
+                DALC.severidades ser = CommonBC.Modelo.severidades.First(f => f.id_severidades == Id_Severidades);
+                if (ser.estado == false)
+                {
+                    ser.estado = true;
+                }
+                else
+                {
+                    ser.estado = false;
+                }
+                CommonBC.Modelo.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
     }
 }

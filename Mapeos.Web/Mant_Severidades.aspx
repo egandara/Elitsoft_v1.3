@@ -174,7 +174,7 @@
 
                     <asp:Button ID="btAgregar" CssClass="button" runat="server" Text="Agregar" OnClick="btAgregar_Click" />
                     <asp:Button ID="btActualizar" CssClass="button"  runat="server" Text="Actualizar" OnClick="btActualizar_Click" />
-                    <asp:Button ID="btEliminar" CssClass="button" runat="server" Text="Eliminar" OnClick="btEliminar_Click" />
+                    <asp:Button ID="btCambiarEstado" CssClass="button" runat="server" Text="Cambiar" OnClick="btCambiar_Click" />
 
                 </td>
                 <td>
