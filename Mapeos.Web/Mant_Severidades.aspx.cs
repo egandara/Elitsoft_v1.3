@@ -67,8 +67,9 @@ namespace Mapeos.Web
             try
             {
                 Negocio.Severidades sev = new Negocio.Severidades()
-                {           
-                    Data = int.Parse(txtData.Text)
+                {    
+                    Numero_Fuente = int.Parse(txtNumeroFuente.Text)
+                    ,Data = int.Parse(txtData.Text)
                     ,Destination_Table_Name = txtDestionTableName.Text
                     ,Source_Column_Name = txtSourceColumnName.Text
                     ,Fuente_Destino = int.Parse(txtFuenteDestino.Text)
@@ -76,14 +77,14 @@ namespace Mapeos.Web
                     ,Ref_Column_Name = txtRefColumnName.Text
                     ,Business_Rule_Cd = int.Parse(txtBusinessRuleCd.Text)
                     ,Business_Rule_Desc = txtBusinessRuleDesc.Text
-                    ,Id_Quality_Type = listas.IdPeriodicidadPorNombre(ddlQualityTypeCd.SelectedValue.ToString())
+                    ,Id_Quality_Type = listas.IdQualityTypePorNombre(ddlQualityTypeCd.SelectedValue.ToString())
                     ,Estado = ChbEstado.Checked
-                    ,Numero_Fuente = int.Parse(txtNumeroFuente.Text)
+                    
                 };
                 if (sev.Create())
                 {
                     LimpiarControles();
-                    lblMensaje.Text = "Severidad para el N° de fuente: " + txtNumeroFuente.Text + ", creada correctamente.";
+                    lblMensaje.Text = "Severidad para el N° de fuente: " + sev.Numero_Fuente + ", creada correctamente.";
                 }
                 else
                 {
@@ -101,7 +102,8 @@ namespace Mapeos.Web
             {
                 Negocio.Severidades sev = new Negocio.Severidades()
                 {
-                    Data = int.Parse(txtData.Text)
+                    Numero_Fuente = int.Parse(txtNumeroFuente.Text)
+                    ,Data = int.Parse(txtData.Text)
                     ,Destination_Table_Name = txtDestionTableName.Text
                     ,Source_Column_Name = txtSourceColumnName.Text
                     ,Fuente_Destino = int.Parse(txtFuenteDestino.Text)
@@ -111,7 +113,7 @@ namespace Mapeos.Web
                     ,Business_Rule_Desc = txtBusinessRuleDesc.Text
                     ,Id_Quality_Type = listas.IdPeriodicidadPorNombre(ddlQualityTypeCd.SelectedValue.ToString())
                     ,Estado = ChbEstado.Checked
-                    ,Numero_Fuente = int.Parse(txtNumeroFuente.Text)
+                    
                 };
                 if (sev.Update())
                 {

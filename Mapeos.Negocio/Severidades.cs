@@ -75,22 +75,21 @@ namespace Mapeos.Negocio
         {
             try
             {
-                DALC.severidades fue = new DALC.severidades();
+                DALC.severidades ser = new DALC.severidades();
 
-                //fue.id_severidades = Id_Severidades;  // id_severidades debe ser auto increment
-                fue.numero_fuente = Numero_Fuente;
-                fue.data_fuente = Data;
-                fue.destination_table_name = Destination_Table_Name;
-                fue.source_column_name = Source_Column_Name;
-                fue.fuente_destino = Fuente_Destino;
-                fue.ref_table_name = Ref_Table_Name;
-                fue.ref_column_name = Ref_Column_Name;
-                fue.business = Business_Rule_Cd;
-                fue.buss_rule_desc = Business_Rule_Desc;
-                fue.id_quality_type = Id_Quality_Type;
-                fue.estado = Estado;
-
-                CommonBC.Modelo.severidades.AddObject(fue);
+                //ser.id_severidades = Id_Severidades;  // id_severidades debe ser auto increment
+                ser.numero_fuente = Numero_Fuente;
+                ser.data_fuente = Data;
+                ser.destination_table_name = Destination_Table_Name;
+                ser.source_column_name = Source_Column_Name;
+                ser.fuente_destino = Fuente_Destino;
+                ser.ref_table_name = Ref_Table_Name;
+                ser.ref_column_name = Ref_Column_Name;
+                ser.business = Business_Rule_Cd;
+                ser.buss_rule_desc = Business_Rule_Desc;
+                ser.id_quality_type = Id_Quality_Type;
+                ser.estado = Estado;
+                CommonBC.Modelo.severidades.AddObject(ser);
                 CommonBC.Modelo.SaveChanges();
 
                 return true;
@@ -98,6 +97,7 @@ namespace Mapeos.Negocio
             catch(Exception ex)
             {
                 return false;
+
             }           
             
         }
@@ -106,20 +106,20 @@ namespace Mapeos.Negocio
         {
             try
             {
-                DALC.severidades fue = CommonBC.Modelo.severidades.First(f => f.id_severidades == Id_Severidades);
+                DALC.severidades ser = CommonBC.Modelo.severidades.First(f => f.id_severidades == Id_Severidades);
 
-                fue.id_severidades = Id_Severidades;
-                fue.numero_fuente = Numero_Fuente;
-                fue.data_fuente = Data;
-                fue.destination_table_name = Destination_Table_Name;
-                fue.source_column_name = Source_Column_Name;
-                fue.fuente_destino = Fuente_Destino;
-                fue.ref_table_name = Ref_Table_Name;
-                fue.ref_column_name = Ref_Column_Name;
-                fue.business = Business_Rule_Cd;
-                fue.buss_rule_desc = Business_Rule_Desc;
-                fue.id_quality_type = Id_Quality_Type;
-                fue.estado = Estado;
+                ser.id_severidades = Id_Severidades;
+                ser.numero_fuente = Numero_Fuente;
+                ser.data_fuente = Data;
+                ser.destination_table_name = Destination_Table_Name;
+                ser.source_column_name = Source_Column_Name;
+                ser.fuente_destino = Fuente_Destino;
+                ser.ref_table_name = Ref_Table_Name;
+                ser.ref_column_name = Ref_Column_Name;
+                ser.business = Business_Rule_Cd;
+                ser.buss_rule_desc = Business_Rule_Desc;
+                ser.id_quality_type = Id_Quality_Type;
+                ser.estado = Estado;
 
                 CommonBC.Modelo.SaveChanges();
 

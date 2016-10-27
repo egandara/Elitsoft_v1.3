@@ -98,7 +98,7 @@
                     <asp:Label ID="lblFuenteDestino" runat="server" Text="Fuente Destino"></asp:Label>
                 </td>
                 <td class="auto-style15">
-                    <asp:TextBox ID="txtFuenteDestino" CssClass="textBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFuenteDestino" CssClass="textBox2" MaxLength="5" onkeypress="javascript:return solonumeros(event)" AutoPostBack="true" onpaste="return false" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -125,7 +125,7 @@
                     <asp:Label ID="lblBusinessRuleCd" runat="server" Text="Business Rule Cd"></asp:Label>
                 </td>
                 <td class="auto-style15">
-                    <asp:TextBox ID="txtBusinessRuleCd" CssClass="textBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtBusinessRuleCd" CssClass="textBox2" MaxLength="5" onkeypress="javascript:return solonumeros(event)" AutoPostBack="true" onpaste="return false" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
