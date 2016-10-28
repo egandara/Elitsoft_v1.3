@@ -17,7 +17,6 @@ namespace Mapeos.Negocio
         private List<Periodicidad> PeriodicidadGenerarListado(List<DALC.periodicidad> listaDALC)
         {
             List<Periodicidad> listaBC = new List<Periodicidad>();
-
             foreach (DALC.periodicidad i in listaDALC)
             {
                 Periodicidad per = new Periodicidad()
@@ -38,7 +37,6 @@ namespace Mapeos.Negocio
         private List<Extractor> ExtractorGenerarListado(List<DALC.extractor> listaDALC)
         {
             List<Extractor> listaBC = new List<Extractor>();
-
             foreach (DALC.extractor i in listaDALC)
             {
                 Extractor ext = new Extractor()
@@ -59,7 +57,6 @@ namespace Mapeos.Negocio
         private List<Fuentes> DescripcionFuenteGenerarListado(List<DALC.desc_fuente> listaDALC)
         {
             List<Fuentes> listaBC = new List<Fuentes>();
-
             foreach (DALC.desc_fuente i in listaDALC)
             {
                 Fuentes fue = new Fuentes()
@@ -86,7 +83,6 @@ namespace Mapeos.Negocio
         private List<Relacion> RelacionGenerarListado(List<DALC.relacion> listaDALC)
         {
             List<Relacion> listaBC = new List<Relacion>();
-
             foreach (DALC.relacion i in listaDALC)
             {
                 Relacion rel = new Relacion()
@@ -108,7 +104,6 @@ namespace Mapeos.Negocio
         private List<Tipo_Relacion> TipoRelacionGenerarListado(List<DALC.tipo_relacion> listaDALC)
         {
             List<Tipo_Relacion> listaBC = new List<Tipo_Relacion>();
-
             foreach (DALC.tipo_relacion i in listaDALC)
             {
                 Tipo_Relacion tip = new Tipo_Relacion()
@@ -126,7 +121,6 @@ namespace Mapeos.Negocio
             string Nombre = (from f in DescripcionFuente_ReadAll()
                              where f.Numero_Fuente == idFuente
                              select f.Nombre).Single().ToString();
-
             return Nombre;
         }
 
@@ -135,7 +129,6 @@ namespace Mapeos.Negocio
             int Id = (from f in DescripcionFuente_ReadAll()
                       where f.Nombre == nombreFuente
                       select f.Numero_Fuente).Single();
-
             return Id;
         }
 
@@ -145,7 +138,6 @@ namespace Mapeos.Negocio
                          join t in TipoRelacionReadAll() on r.Id_Tipo_Relacion equals t.IdTipoRelacion
                          where r.Numero_Fuente == idFuente && r.Id_Tipo_Relacion == 1
                          select NombreFuentePorId(r.Numero_Fuente_Relacionada)).ToList();
-
             return query;
         }
 
@@ -155,7 +147,6 @@ namespace Mapeos.Negocio
                          join t in TipoRelacionReadAll() on r.Id_Tipo_Relacion equals t.IdTipoRelacion
                          where r.Numero_Fuente == idFuente && r.Id_Tipo_Relacion == 2
                          select NombreFuentePorId(r.Numero_Fuente_Relacionada)).ToList();
-
             return query;
         }
 
@@ -166,7 +157,6 @@ namespace Mapeos.Negocio
                          join t in TipoRelacionReadAll() on r.Id_Tipo_Relacion equals t.IdTipoRelacion
                          where r.Numero_Fuente == idFuente && r.Id_Tipo_Relacion == 3
                          select NombreFuentePorId(r.Numero_Fuente_Relacionada)).ToList();
-
             return query;
         }
 
@@ -175,7 +165,6 @@ namespace Mapeos.Negocio
             string Nombre = (from p in Periodicidad_ReadAll()
                             where p.Id_Periodicidad == idPeriodicidad
                             select p.Nombre_Periodicidad).Single();
-
             return Nombre;
         }
 
@@ -184,7 +173,6 @@ namespace Mapeos.Negocio
             string Nombre = (from e in Extractor_ReadAll()
                              where e.Id_Extractor == idExtractor
                              select e.Nombre_Extractor).Single();
-
             return Nombre;
         }
 
@@ -193,7 +181,6 @@ namespace Mapeos.Negocio
             int Id = (from p in Periodicidad_ReadAll()
                       where p.Nombre_Periodicidad == nombrePeriodicidad
                       select p.Id_Periodicidad).Single();
-
             return Id;
         }
 
@@ -202,7 +189,6 @@ namespace Mapeos.Negocio
             int Id = (from e in Extractor_ReadAll()
                       where e.Nombre_Extractor == nombreExtractor
                       select e.Id_Extractor).Single();
-
             return Id;
         }
 
@@ -214,7 +200,6 @@ namespace Mapeos.Negocio
         private List<Usuario> Usuario_GenerarListado(List<DALC.login> listaDALC)
         {
             List<Usuario> listaBC = new List<Usuario>();
-
             foreach (DALC.login i in listaDALC)
             {
                 Usuario usu = new Usuario()
@@ -240,7 +225,6 @@ namespace Mapeos.Negocio
         private List<TipoUsuario> TipoUsuario_GenerarListado(List<DALC.tipo_usuario> listaDALC)
         {
             List<TipoUsuario> listaBC = new List<TipoUsuario>();
-
             foreach (DALC.tipo_usuario i in listaDALC)
             {
                 TipoUsuario tip = new TipoUsuario()
@@ -256,55 +240,45 @@ namespace Mapeos.Negocio
         public List<int> ListaCompletaFuente()
         {
             var lista = CommonBC.Modelo.desc_fuente.Select(f => f.numero_fuente);
-
             return lista.ToList();
         }
 
         //Precedencias
-
         public List<int> FuentesPrecedencias(int idFuente)
         {
             var lista = CommonBC.Modelo.relacion.Where(r => r.numero_fuente == idFuente && r.id_tipo_relacion == 1).Select(r => r.numero_fuente_relacionada);
-
             return lista.ToList();
         }
 
         public List<int> ListaPrecedenciasNoAsociadas(int idFuente)
         {
             var lista = ListaCompletaFuente().Except(FuentesPrecedencias(idFuente));
-
             return lista.ToList();
         }
 
         //Destinos
-
         public List<int> FuentesDestinos(int idFuente)
         {
             var lista = CommonBC.Modelo.relacion.Where(r => r.numero_fuente == idFuente && r.id_tipo_relacion == 2).Select(r => r.numero_fuente_relacionada);
-
             return lista.ToList();
         }
 
         public List<int> ListaDestinosNoAsociados(int idFuente)
         {
             var lista = ListaCompletaFuente().Except(FuentesDestinos(idFuente));
-
             return lista.ToList();
         }
 
         //Minors
-
         public List<int> FuentesMinors(int idFuente)
         {
             var lista = CommonBC.Modelo.relacion.Where(r => r.numero_fuente == idFuente && r.id_tipo_relacion == 3).Select(r => r.numero_fuente_relacionada);
-
             return lista.ToList();
         }
 
         public List<int> ListaMinorsNoAsociadas(int idFuente)
         {
             var lista = ListaCompletaFuente().Except(FuentesMinors(idFuente));
-
             return lista.ToList();
         }
 
@@ -324,14 +298,12 @@ namespace Mapeos.Negocio
                              Periodicidad = p.Nombre_Periodicidad,
                              Tipo_Extractor = e.Nombre_Extractor
                          }).ToList();
-
             return query;
         }
 
         public List<string> ListaSistemas()
         {
             var lista = DescripcionFuente_ReadAll().Select(f => f.Sistema_Fuente).Distinct();
-
             return lista.ToList();
         }
 
@@ -365,7 +337,6 @@ namespace Mapeos.Negocio
                               Sistema = f.Sistema_Fuente,
                               Archivo = f.Archivo_Fuente
                           }).ToList();
-
             var query = (from f in DescripcionFuente_ReadAll()
                          join r in RelacionReadAll() on f.Numero_Fuente equals r.Numero_Fuente
                          join q in queryR on r.Numero_Fuente_Relacionada equals q.Id
@@ -376,7 +347,6 @@ namespace Mapeos.Negocio
                              Sistema = f.Sistema_Fuente,
                              Archivo = q.Archivo
                          }).ToList();
-
             var lista = DescripcionFuente_ReadAll().Select(f => f.Numero_Fuente + " " + f.Archivo_Fuente).Except(query.Where(q => q.Id == idFuente).Select(q => q.Id_Relacionada + " " + q.Archivo)).ToList();
             return lista;
         }
@@ -391,7 +361,6 @@ namespace Mapeos.Negocio
                               Sistema = f.Sistema_Fuente,
                               Archivo = f.Archivo_Fuente
                           }).ToList();
-
             var query = (from f in DescripcionFuente_ReadAll()
                          join r in RelacionReadAll() on f.Numero_Fuente equals r.Numero_Fuente
                          join q in queryR on r.Numero_Fuente_Relacionada equals q.Id
@@ -403,9 +372,7 @@ namespace Mapeos.Negocio
                              Archivo = q.Archivo,
                              Tipo = r.Id_Tipo_Relacion
                          }).ToList();
-
             var lista = query.Where(f => f.Id == idFuente && f.Tipo == tipo).Select(f => f.Id_Relacionada + " " + f.Archivo).Distinct().ToList();
-
             return lista;
         }
         
@@ -414,7 +381,6 @@ namespace Mapeos.Negocio
             int Id = (from t in TipoUsuario_ReadAll()
                       where t.Nombre_Tipo == nombreTipoUsuario
                       select t.Id_Tipo_Usuario).Single();
-
             return Id;
         }
 
@@ -423,12 +389,10 @@ namespace Mapeos.Negocio
             string Nombre = (from t in TipoUsuario_ReadAll()
                              where t.Id_Tipo_Usuario == idTipousuario
                              select t.Nombre_Tipo).Single();
-
             return Nombre;
         }
 
         // Severidades
-
         public List<Severidades> Severidades_ReadAll()
         {
             return SeveridadesGenerarListado(CommonBC.Modelo.severidades.ToList());
@@ -437,7 +401,6 @@ namespace Mapeos.Negocio
         private List<Severidades> SeveridadesGenerarListado(List<DALC.severidades> listaDALC)
         {
             List<Severidades> listaBC = new List<Severidades>();
-
             foreach (DALC.severidades i in listaDALC)
             {
                 Severidades per = new Severidades()
@@ -488,7 +451,6 @@ namespace Mapeos.Negocio
             int Id = (from p in Tipo_Calidad_ReadAll()
                       where p.Nombre_Calidad == nombreQualityType
                       select p.Id_Quality_Type).Single();
-
             return Id;
         }
 
@@ -497,12 +459,10 @@ namespace Mapeos.Negocio
             string Id = (from p in Tipo_Calidad_ReadAll()
                       where p.Id_Quality_Type == idQualityType
                       select p.Nombre_Calidad).Single();
-
             return Id;
         }
 
         //Tipo_Calidad
-
         public List<Tipo_Calidad> Tipo_Calidad_ReadAll()
         {
             return Tipo_CalidadGenerarListado(CommonBC.Modelo.tipo_calidad.ToList());
@@ -511,20 +471,16 @@ namespace Mapeos.Negocio
         private List<Tipo_Calidad> Tipo_CalidadGenerarListado(List<DALC.tipo_calidad> listaDALC)
         {
             List<Tipo_Calidad> listaBC = new List<Tipo_Calidad>();
-
             foreach (DALC.tipo_calidad i in listaDALC)
             {
                 Tipo_Calidad per = new Tipo_Calidad()
                 {
                     Id_Quality_Type = i.id_quality_type
                     ,Nombre_Calidad = i.nombre
-
                 };
                 listaBC.Add(per);
             }
             return listaBC;
         }
-
-
     }
 }
