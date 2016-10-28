@@ -27,9 +27,7 @@
             return true;
         }
         function solonumeros2(e) {
-
             var key;
-
             if (window.event) // IE
             {
                 key = e.keyCode;
@@ -38,11 +36,9 @@
             {
                 key = e.which;
             }
-
             if (key < 48 || key > 57 && key < 75 || key > 75 && key < 107 || key > 107)  {
                 return false;
             }
-
             return true;
         }
         function lbPrecedencias_DoubleClick() {
@@ -164,9 +160,7 @@
                 </tr>
             </table>
         </asp:Panel>
-
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
         </asp:ContentPlaceHolder>
     </div>
     </form>

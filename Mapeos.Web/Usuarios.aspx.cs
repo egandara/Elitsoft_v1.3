@@ -28,10 +28,8 @@ namespace Mapeos.Web
                       "err_msg",
                       "alert('Su perfil no permite realizar modificaciones en esta página.');",
                       true);
-
                     DesactivarControles();
                 }
-
                 CargarDdl();
             }
         }
@@ -53,7 +51,6 @@ namespace Mapeos.Web
             txtClave.Enabled = false;
             txtClave2.Enabled = false;
             ddlPerfil.Enabled = false;
-
             btnCreate.Enabled = false;
             btnUpdate.Enabled = false;
             btnDesactivar.Enabled = false;
@@ -66,7 +63,6 @@ namespace Mapeos.Web
                 Rut = int.Parse(txtRut.Text),
                 Dv = char.Parse(txtDv.Text)
             };
-
             if (IsPostBack)
             {
                 if (usu.Read())
@@ -90,7 +86,6 @@ namespace Mapeos.Web
 
             if (Digito(int.Parse(txtRut.Text)) == txtDv.Text)
             {
-
                 txtNombre.Focus();
             }
             else

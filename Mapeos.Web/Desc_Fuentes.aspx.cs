@@ -135,8 +135,6 @@ namespace Mapeos.Web
 
         public override void VerifyRenderingInServerForm(Control control)
         {
-            /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
-               server control at run time. */
         }
 
         protected void btnExportar_Click(object sender, EventArgs e)
@@ -155,15 +153,11 @@ namespace Mapeos.Web
             this.EnableViewState = false;
             System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
             System.Web.UI.HtmlTextWriter oHtmlTextWriter = new System.Web.UI.HtmlTextWriter(oStringWriter);
-
             gvFuentes.AllowPaging = false;
             CargarFuentes();
-
-
             gvFuentes.RenderControl(oHtmlTextWriter);
             Response.Write(oStringWriter.ToString());
             Response.End();
-
             gvFuentes.AllowPaging = true;
             CargarFuentes();
         }

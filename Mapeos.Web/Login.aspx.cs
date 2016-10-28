@@ -29,9 +29,7 @@ namespace Mapeos.Web
                 UserName = lgnMapeos.UserName,
                 Clave = Encriptacion.Encriptar(lgnMapeos.Password)
             };
-
             user.ValidarActivo();
-
             if (user.Estado == false)
             {
                 lgnMapeos.FailureText = "Usuario desactivado.";

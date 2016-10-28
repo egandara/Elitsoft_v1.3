@@ -39,8 +39,7 @@
                 <td class="auto-style15">
                     <asp:Label ID="lblTesting" runat="server"></asp:Label>
                 </td>
-                <td>
-                    &nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style20"></td>

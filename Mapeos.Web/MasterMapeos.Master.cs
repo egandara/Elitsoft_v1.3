@@ -24,12 +24,6 @@ namespace Mapeos.Web
             {
                 lblTipoUsuario.Text = listas.NombreTipoUsuarioPorId(usuario.Tipo_Usuario);
             }
-            /*
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetExpires(DateTime.Now);
-            Response.Cache.SetNoServerCaching();
-            Response.Cache.SetNoStore();
-             * */
         }
 
         protected void linkCambioPass_Click(object sender, EventArgs e)
@@ -70,9 +64,7 @@ namespace Mapeos.Web
                 {
                     Rut = usuario.Rut
                 };
-
                 usu.Read();
-
                 if (usu.Clave == Encriptacion.Encriptar(txtClaveActual.Text) && usu.CambiarClave(Encriptacion.Encriptar(txtNuevaClave.Text)))
                 {
                     OcultarControles();

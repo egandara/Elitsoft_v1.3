@@ -61,12 +61,10 @@ namespace Mapeos.Web
                 {
                     string[] cadena = lbPrecedencias.SelectedItem.Text.Split(' ');
                     int.Parse(cadena[0].TrimEnd(' '));
-
                     Fuentes fue = new Fuentes()
                     {
                         Numero_Fuente = int.Parse(cadena[0].TrimEnd(' '))
                     };
-
                     if (IsPostBack)
                     {
                         if (fue.Read())
@@ -79,7 +77,6 @@ namespace Mapeos.Web
                             txtCantidad.Text = fue.Cantidad_Registros.ToString();
                             ddlPeriodicidad.SelectedValue = listas.NombrePeriodicidadPorId(fue.Periodicidad);
                             ddlExtractor.SelectedValue = listas.NombreExtractorPorId(fue.Tipo_Extractor);
-
                             CargarRelaciones();
                         }
                         else
@@ -95,12 +92,10 @@ namespace Mapeos.Web
                 {
                     string[] cadena = lbDestinos.SelectedItem.Text.Split(' ');
                     int.Parse(cadena[0].TrimEnd(' '));
-
                     Fuentes fue = new Fuentes()
                     {
                         Numero_Fuente = int.Parse(cadena[0].TrimEnd(' '))
                     };
-
                     if (IsPostBack)
                     {
                         if (fue.Read())
@@ -129,12 +124,10 @@ namespace Mapeos.Web
                 {
                     string[] cadena = lbMinors.SelectedItem.Text.Split(' ');
                     int.Parse(cadena[0].TrimEnd(' '));
-
                     Fuentes fue = new Fuentes()
                     {
                         Numero_Fuente = int.Parse(cadena[0].TrimEnd(' '))
                     };
-
                     if (IsPostBack)
                     {
                         if (fue.Read())
@@ -147,7 +140,6 @@ namespace Mapeos.Web
                             txtCantidad.Text = fue.Cantidad_Registros.ToString();
                             ddlPeriodicidad.SelectedValue = listas.NombrePeriodicidadPorId(fue.Periodicidad);
                             ddlExtractor.SelectedValue = listas.NombreExtractorPorId(fue.Tipo_Extractor);
-
                             CargarRelaciones();
                         }
                         else
@@ -175,7 +167,6 @@ namespace Mapeos.Web
             ddlExtractor.DataBind();
             ddlExtractor.Items.Insert(0, "--Seleccione extractor--");
             ddlExtractor.SelectedIndex = 0;
-
             ddlPrecedencias.DataSource = listas.DescripcionFuente_ReadAll().Select(f => f.Nombre);
             ddlPrecedencias.DataBind();
             ddlPrecedencias.Items.Insert(0, "--Seleccione precedencia--");
@@ -196,7 +187,6 @@ namespace Mapeos.Web
             {
                 Numero_Fuente = int.Parse(txtNumero.Text)
             };
-
             if (IsPostBack)
             {
                 if (fue.Read())
@@ -208,7 +198,6 @@ namespace Mapeos.Web
                     txtCantidad.Text = fue.Cantidad_Registros.ToString();
                     ddlPeriodicidad.SelectedValue = listas.NombrePeriodicidadPorId(fue.Periodicidad);
                     ddlExtractor.SelectedValue = listas.NombreExtractorPorId(fue.Tipo_Extractor);
-
                     CargarRelaciones();
                 }
                 else
@@ -222,28 +211,20 @@ namespace Mapeos.Web
 
         private void CargarRelaciones()
         {
-            //lbPrecedencias.DataSource = listas.ListaRelacionesPrecedenciasPorId(int.Parse(txtNumero.Text));
             lbPrecedencias.DataSource = listas.ListaPrecedenciasLB(int.Parse(txtNumero.Text), 1);
             lbPrecedencias.DataBind();
-            //ddlPrecedencias.DataSource = listas.ListaPrecedenciasNoAsociadas(int.Parse(txtNumero.Text));
             ddlPrecedencias.DataSource = listas.ListaPrecedencias(int.Parse(txtNumero.Text));
             ddlPrecedencias.DataBind();
             ddlPrecedencias.Items.Insert(0, "--Seleccione precedencia--");
             ddlPrecedencias.SelectedIndex = 0;
-
-            //lbDestinos.DataSource = listas.ListaRelacionesDestinosPorId(int.Parse(txtNumero.Text));
             lbDestinos.DataSource = listas.ListaPrecedenciasLB(int.Parse(txtNumero.Text), 2);
             lbDestinos.DataBind();
-            //ddlDestinos.DataSource = listas.ListaDestinosNoAsociados(int.Parse(txtNumero.Text));
             ddlDestinos.DataSource = listas.ListaPrecedencias(int.Parse(txtNumero.Text));
             ddlDestinos.DataBind();
             ddlDestinos.Items.Insert(0, "--Seleccione destino--");
             ddlDestinos.SelectedIndex = 0;
-
-            //lbMinors.DataSource = listas.ListaRelacionesMinorPorId(int.Parse(txtNumero.Text));
             lbMinors.DataSource = listas.ListaPrecedenciasLB(int.Parse(txtNumero.Text), 3);
             lbMinors.DataBind();
-            //ddlMinors.DataSource = listas.ListaMinorsNoAsociadas(int.Parse(txtNumero.Text));
             ddlMinors.DataSource = listas.ListaPrecedencias(int.Parse(txtNumero.Text));
             ddlMinors.DataBind();
             ddlMinors.Items.Insert(0, "--Seleccione minor--");
@@ -259,15 +240,12 @@ namespace Mapeos.Web
             ddlPeriodicidad.SelectedIndex = 0;
             ddlExtractor.SelectedIndex = 0;
             lblMensaje.Text = string.Empty;
-
             lbPrecedencias.Items.Clear();
             lbDestinos.Items.Clear();
             lbMinors.Items.Clear();
-
             ddlPrecedencias.SelectedIndex = 0;
             ddlDestinos.SelectedIndex = 0;
             ddlMinors.SelectedIndex = 0;
-
             lblNumeroFuente.Text = string.Empty;
             lblPrecedencias.Text = string.Empty;
             lblDestinos.Text = string.Empty;
@@ -322,7 +300,6 @@ namespace Mapeos.Web
                     Tipo_Extractor = listas.IdExtractorPorNombre(ddlExtractor.SelectedValue.ToString()),
                     Nombre = txtSistema.Text + "_" + txtArchivo.Text
                 };
-
                 if (fue.Update())
                 {
                     LimpiarControles();
@@ -344,12 +321,10 @@ namespace Mapeos.Web
             try
             {
                 int idFuente = int.Parse(txtNumero.Text);
-
                 Fuentes fue = new Fuentes()
                 {
                     Numero_Fuente = idFuente
                 };
-
                 if(fue.Delete())
                 {
                     LimpiarControles();
@@ -372,14 +347,12 @@ namespace Mapeos.Web
             try
             {
                 string[] cadena = ddlPrecedencias.SelectedItem.Text.Split(' ');
-
                 Relacion rel = new Relacion()
                 {
                     Id_Tipo_Relacion = 1,
                     Numero_Fuente = int.Parse(txtNumero.Text),
                     Numero_Fuente_Relacionada = int.Parse(cadena[0].TrimEnd(' '))
                 };
-
                 if (rel.Create())
                 {
                     lblPrecedencias.Text = "Precedencia agregada correctamente.";
@@ -401,14 +374,12 @@ namespace Mapeos.Web
             try
             {
                 string[] cadena = lbPrecedencias.SelectedItem.Text.Split(' ');
-
                 Relacion rel = new Relacion()
                 {
                     Id_Tipo_Relacion = 1,
                     Numero_Fuente = int.Parse(txtNumero.Text),
                     Numero_Fuente_Relacionada = int.Parse(cadena[0].TrimEnd(' '))
                 };
-
                 if (rel.Delete())
                 {
                     lblPrecedencias.Text = "Precedencia eliminada correctamente.";
@@ -430,21 +401,18 @@ namespace Mapeos.Web
             try
             {
                 string[] cadena = ddlDestinos.SelectedItem.Text.Split(' ');
-
                 Relacion rel = new Relacion()
                 {
                     Id_Tipo_Relacion = 2,
                     Numero_Fuente = int.Parse(txtNumero.Text),
                     Numero_Fuente_Relacionada = int.Parse(cadena[0].TrimEnd(' '))
                 };
-
                 Relacion rel2 = new Relacion()
                 {
                     Id_Tipo_Relacion = 1,
                     Numero_Fuente = int.Parse(cadena[0].TrimEnd(' ')),
                     Numero_Fuente_Relacionada = int.Parse(txtNumero.Text)
                 };
-
                 if (rel.Create() && rel2.Create())
                 {
                     lblDestinos.Text = "Destino agregado correctamente.";
@@ -466,21 +434,18 @@ namespace Mapeos.Web
             try
             {
                 string[] cadena = lbDestinos.SelectedItem.Text.Split(' ');
-
                 Relacion rel = new Relacion()
                 {
                     Id_Tipo_Relacion = 2,
                     Numero_Fuente = int.Parse(txtNumero.Text),
                     Numero_Fuente_Relacionada = int.Parse(cadena[0].TrimEnd(' '))
                 };
-
                 Relacion rel2 = new Relacion()
                 {
                     Id_Tipo_Relacion = 1,
                     Numero_Fuente = int.Parse(cadena[0].TrimEnd(' ')),
                     Numero_Fuente_Relacionada = int.Parse(txtNumero.Text)
                 };
-
                 if (rel.Delete())
                 {
                     if (rel2.Read())
@@ -511,14 +476,12 @@ namespace Mapeos.Web
             try
             {
                 string[] cadena = ddlMinors.SelectedItem.Text.Split(' ');
-
                 Relacion rel = new Relacion()
                 {
                     Id_Tipo_Relacion = 3,
                     Numero_Fuente = int.Parse(txtNumero.Text),
                     Numero_Fuente_Relacionada = int.Parse(cadena[0].TrimEnd(' '))
                 };
-
                 if (rel.Create())
                 {
                     lblMinors.Text = "Minor agregada correctamente.";
@@ -540,14 +503,12 @@ namespace Mapeos.Web
             try
             {
                 string[] cadena = lbMinors.SelectedItem.Text.Split(' ');
-
                 Relacion rel = new Relacion()
                 {
                     Id_Tipo_Relacion = 3,
                     Numero_Fuente = int.Parse(txtNumero.Text),
                     Numero_Fuente_Relacionada = int.Parse(cadena[0].TrimEnd(' '))
                 };
-
                 if (rel.Delete())
                 {
                     lblMinors.Text = "Minor eliminada correctamente.";
