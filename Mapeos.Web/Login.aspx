@@ -25,7 +25,7 @@
                         <img alt="Logo" class="auto-style1" src="Images/logo_elitsoft.jpg" />
                     </td>
                     <td>
-                        <asp:Login ID="lgnMapeos" runat="server" CssClass="login" OnAuthenticate="lgnMapeos_Authenticate" Orientation="Horizontal" RememberMeSet="True" Width="100%" RememberMeText="Recordar." BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt">
+                        <asp:Login ID="lgnMapeos" runat="server" CssClass="login" OnAuthenticate="lgnMapeos_Authenticate" Orientation="Horizontal" RememberMeSet="True" Width="100%" RememberMeText="Recordar." BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt" TextLayout="TextOnTop">
                             <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
                         </asp:Login>
                     </td>

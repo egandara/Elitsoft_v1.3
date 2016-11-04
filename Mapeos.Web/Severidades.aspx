@@ -26,7 +26,7 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style19">
-                    <asp:Label ID="lblListaSeveridades" runat="server" Text="Listar Severidad"></asp:Label>
+                    <asp:Label ID="lblListaSeveridades" runat="server" Text="Listar Severidad" style="font-weight: 700; font-size: large"></asp:Label>
                 </td>
                 <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -49,7 +49,7 @@
             </tr>
             <tr>
                 <td class="auto-style19">
-                    <asp:GridView ID="gvSeveridad" CssClass="gridView" runat="server" AllowPaging="True" OnSelectedIndexChanged="gvSeveridad_SelectedIndexChanged" OnRowCreated="gvSeveridad_RowCreated">
+                    <asp:GridView ID="gvSeveridad"  CssClass="gridView" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" runat="server" AllowPaging="True" OnSelectedIndexChanged="gvSeveridad_SelectedIndexChanged" OnRowCreated="gvSeveridad_RowCreated">
                         <Columns>
                             <asp:TemplateField ShowHeader="False">
                                 <ItemTemplate>

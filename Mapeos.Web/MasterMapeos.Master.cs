@@ -72,7 +72,6 @@ namespace Mapeos.Web
                 };
 
                 usu.Read();
-
                 if (usu.Clave == Encriptacion.Encriptar(txtClaveActual.Text) && usu.CambiarClave(Encriptacion.Encriptar(txtNuevaClave.Text)))
                 {
                     OcultarControles();

@@ -525,6 +525,20 @@ namespace Mapeos.Negocio
             return listaBC;
         }
 
+        public object ListaUsuarios()
+        {
+            var query = (from u in Usuario_ReadAll()
+                         join t in TipoUsuario_ReadAll() on u.Tipo_Usuario equals t.Id_Tipo_Usuario
+                         select new
+                         {
+                             RUT = u.Rut + "-" + u.Dv,
+                             Nombre = u.Nombre,
+                             UserName = u.UserName,
+                             Perfil = t.Nombre_Tipo,
+                             Activo = u.Estado
+                         }).ToList();
 
+            return query;
+        }
     }
 }

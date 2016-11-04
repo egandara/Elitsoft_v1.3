@@ -31,9 +31,15 @@ namespace Mapeos.Web
 
                     DesactivarControles();
                 }
-
+                CargarUsuarios();
                 CargarDdl();
             }
+        }
+
+        private void CargarUsuarios()
+        {
+            gvUsuarios.DataSource = listas.ListaUsuarios();
+            gvUsuarios.DataBind();
         }
 
         private void CargarDdl()
@@ -246,6 +252,46 @@ namespace Mapeos.Web
             catch (Exception ex)
             {
                 lblMensaje.Text = "Error al desactivar usuario.";
+            }
+        }
+
+        protected void btnSeleccionar_onClick(object sender, System.EventArgs e)
+        {
+            if (usuario.Tipo_Usuario != 1)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                      "err_msg",
+                      "alert('Su perfil no permite editar usuarios.');",
+                      true);
+            }
+            else
+            {
+                Button btn = (Button)sender;
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                string codigo = row.Cells[1].Text;
+                string[] cadena = codigo.Split('-');
+
+                Usuario usu = new Usuario()
+                {
+                    Rut = int.Parse(cadena[0].TrimEnd('-'))
+                };
+
+                if (usu.Read())
+                {
+                    txtRut.Text = usu.Rut.ToString();
+                    txtDv.Text = usu.Dv.ToString();
+                    txtNombre.Text = usu.Nombre;
+                    txtUsername.Text = usu.UserName;
+                    ddlPerfil.SelectedValue = listas.NombreTipoUsuarioPorId(usu.Tipo_Usuario);
+                    if (usu.Estado == true)
+                    {
+                        btnDesactivar.Text = "Desactivar";
+                    }
+                    if (usu.Estado == false)
+                    {
+                        btnDesactivar.Text = "Activar";
+                    }
+                }
             }
         }
     }

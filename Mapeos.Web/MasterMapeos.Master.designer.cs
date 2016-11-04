@@ -121,6 +121,15 @@ namespace Mapeos.Web {
         protected global::System.Web.UI.WebControls.TextBox txtRepetirNuevaClave;
         
         /// <summary>
+        /// Control cvValidadorClavve.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvValidadorClavve;
+        
+        /// <summary>
         /// Control btnAceptar.
         /// </summary>
         /// <remarks>
@@ -137,15 +146,6 @@ namespace Mapeos.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
-        
-        /// <summary>
-        /// Control lblTime.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTime;
         
         /// <summary>
         /// Control LoginName1.
