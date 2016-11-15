@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,7 +10,7 @@ namespace Mapeos.Web
 {
     public partial class Estructura : System.Web.UI.Page
     {
-        private int numOfRows = 1;
+        private static int numOfRows = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,10 +27,7 @@ namespace Mapeos.Web
             table.ID = "Table1";
             Page.Form.Controls.Add(table);
 
-            //The number of Columns to be generated
-            const int colsCount = 5;//You can changed the value of 3 based on you requirements
-
-            // Now iterate through the table and add your controls
+            const int colsCount = 6;
 
             for (int i = 0; i < rowsCount; i++)
             {
@@ -38,23 +36,60 @@ namespace Mapeos.Web
                 {
                     TableCell cell = new TableCell();
                     TextBox tb = new TextBox();
+                    CheckBox chk = new CheckBox();
+                    DropDownList ddl = new DropDownList();
+                    Button btn = new Button();
 
-                    // Set a unique ID for each TextBox added
                     tb.ID = "TextBoxRow_" + i + "Col_" + j;
-                    // Add the control to the TableCell
-                    cell.Controls.Add(tb);
-                    // Add the TableCell to the TableRow
-                    row.Cells.Add(cell);
+                    chk.ID = "CheckBoxRow_" + i + "Col_" + j;
+                    ddl.ID = "DropDownListRow_" + i + "Col_" + j;
+                    btn.ID = "Button_" + i + "Col_" + j;
+
+                    switch (j)
+                    {
+                        case 0:
+                            cell.Controls.Add(tb);
+                            row.Cells.Add(cell);
+                            tb.Text = (i + 1).ToString();
+                            break;
+                        case 1:
+                            cell.Controls.Add(tb);
+                            row.Cells.Add(cell);
+                            break;
+                        case 2:
+                            cell.Controls.Add(ddl);
+                            ddl.Items.Insert(0, "--Tipo de dato--");
+                            ddl.Items.Insert(1, "Varchar");
+                            ddl.Items.Insert(2, "Int");
+                            ddl.Items.Insert(3, "Char");
+                            row.Cells.Add(cell);
+                            break;
+                        case 3:
+                            cell.Controls.Add(chk);
+                            row.Cells.Add(cell);
+                            break;
+                        case 4:
+                            cell.Controls.Add(tb);
+                            row.Cells.Add(cell);
+                            break;
+                        case 5:
+                            cell.Controls.Add(tb);
+                            row.Cells.Add(cell);
+                            break;
+                        case 6:
+                            cell.Controls.Add(btn);
+                            row.Cells.Add(cell);
+                            break;
+                    }
+
+                    
                 }
 
-                // And finally, add the TableRow to the Table
                 miTabla.Rows.Add(row);
             }
 
-            //Set Previous Data on PostBacks
             SetPreviousData(rowsCount, colsCount);
 
-            //Sore the current Rows Count in ViewState
             rowsCount++;
             ViewState["RowsCount"] = rowsCount;
         }
@@ -66,6 +101,7 @@ namespace Mapeos.Web
                 numOfRows = Convert.ToInt32(ViewState["RowsCount"].ToString());
                 GenerateTable(numOfRows);
             }
+            numOfRows++;
         }
 
         private void SetPreviousData(int rowsCount, int colsCount)
@@ -77,13 +113,21 @@ namespace Mapeos.Web
                 {
                     for (int j = 0; j < colsCount; j++)
                     {
-                        //Extracting the Dynamic Controls from the Table
                         TextBox tb = (TextBox)table.Rows[i].Cells[j].FindControl("TextBoxRow_" + i + "Col_" + j);
-                        //Use Request objects for getting the previous data of the dynamic textbox
+                        
                         tb.Text = Request.Form["TextBoxRow_" + i + "Col_" + j];
                     }
                 }
             }
+        }
+
+        protected void btnDel_Click(object sender, EventArgs e)
+        {
+            TableRow rw = miTabla.Rows[miTabla.Rows.Count - 1];
+            miTabla.Rows.Remove(rw);
+            miTabla.Visible = true;
+            numOfRows--;
+            GenerateTable(numOfRows);
         }
     }
 }

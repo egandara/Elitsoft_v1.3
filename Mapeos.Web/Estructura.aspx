@@ -8,12 +8,14 @@
             <asp:TableRow>
                 <asp:TableHeaderCell>Nº</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Nombre</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Null</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Tipo</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Not Null</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Descripción</asp:TableHeaderCell>
                 <asp:TableHeaderCell>_</asp:TableHeaderCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:Button ID="btnAdd" runat="server" Text="+" OnClick="btnAdd_Click" />
+        <asp:Button ID="btnAdd" runat="server" Text="+" OnClick="btnAdd_Click" Font-Bold="True" Font-Size="Medium" />
+        <asp:Button ID="btnDel" runat="server" Font-Bold="True" Font-Size="Medium" OnClick="btnDel_Click" Text="-" />
         <br />
         <br />
         <br />
