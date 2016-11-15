@@ -26,7 +26,6 @@ namespace Mapeos.Web
                 {
                     string previousPageUrl = Request.UrlReferrer.AbsoluteUri;
                     string previousPageName = System.IO.Path.GetFileName(Request.UrlReferrer.AbsolutePath);
-
                     if (previousPageName == "Severidades.aspx")
                     {
                         CargarDdl();

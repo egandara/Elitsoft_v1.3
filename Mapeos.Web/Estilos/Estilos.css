@@ -98,7 +98,7 @@
     font-family    :  verdana, arial, snas-serif;
     font-size      :  11px;
     width          : 100%;
-    border: solid 1px #525252;  
+    border: solid 1px #dbddff;
     border-collapse: collapse;
     border-color: #DEDFDE;
     border-style: none;
@@ -111,7 +111,7 @@
     font-family    :  verdana, arial, snas-serif;
     font-size      :  11px;
     width          : 100%;
-    border: solid 1px #525252;  
+    border: #dbddff;  
     border-collapse: collapse;
     border-color: #DEDFDE;
     border-style: none;
@@ -143,7 +143,7 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin: auto;
+    margin: auto auto auto 49px;
 }
 
 

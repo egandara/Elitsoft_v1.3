@@ -39,6 +39,11 @@
             <asp:ListItem>indianven</asp:ListItem>
             <asp:ListItem>vesta</asp:ListItem>
         </asp:DropDownList>
+        <br />
+        <asp:GridView ID="gvPruebas" runat="server" OnPageIndexChanging="gvPruebas_PageIndexChanging">
+        </asp:GridView>
+        <asp:Button ID="btnImportar" runat="server" OnClick="btnImportar_Click" Text="Importar" />
+        <br />
     </div>
     </form>
 </body>

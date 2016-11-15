@@ -7,10 +7,6 @@
         .auto-style11 {
             width: 117px;
         }
-        .auto-style12 {
-            height: 23px;
-            width: 117px;
-        }
         .auto-style14 {
             height: 23px;
             width: 317px;
@@ -21,7 +17,7 @@
         }
         .auto-style18 {
             height: 23px;
-            width: 362px;
+            width: 456px;
             text-align: left;
         }
         .auto-style19 {
@@ -40,6 +36,24 @@
             font-weight: normal;
             text-align: left;
         }
+        .auto-style22 {
+            width: 456px;
+            font-weight: normal;
+            text-align: left;
+            height: 22px;
+        }
+        .auto-style23 {
+            width: 317px;
+            height: 22px;
+        }
+        .auto-style24 {
+            height: 22px;
+        }
+        .auto-style25 {
+            width: 456px;
+            font-weight: normal;
+            text-align: left;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -47,13 +61,13 @@
     <asp:Panel ID="Panel2" runat="server">
             <table style="width:100%;">
                 <tr>
-                    <td class="auto-style21" style="font-weight: 700">Filtrar:</td>
-                    <td class="auto-style17">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style22" style="font-weight: 700">Filtrar:</td>
+                    <td class="auto-style23"></td>
+                    <td class="auto-style24"></td>
+                    <td class="auto-style24"></td>
+                    <td class="auto-style24"></td>
+                    <td class="auto-style24"></td>
+                    <td class="auto-style24"></td>
                 </tr>
                 <tr>
                     <td class="auto-style18">Por sistema:<asp:CheckBox ID="chbSistemas" runat="server" />
@@ -69,7 +83,7 @@
                     <td class="auto-style20"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style21">
+                    <td class="auto-style25">
                         <asp:Button ID="btnFiltrar" CssClass="button" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
                     </td>
                     <td class="auto-style17">
@@ -81,7 +95,7 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style21">Ver:<asp:DropDownList ID="ddlPaginas" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                    <td class="auto-style25">Ver:<asp:DropDownList ID="ddlPaginas" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                         <asp:ListItem Value="20">--</asp:ListItem>
                         <asp:ListItem>5</asp:ListItem>
                         <asp:ListItem>10</asp:ListItem>
@@ -96,7 +110,7 @@
                     <td>&nbsp;</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvFuentes" CssClass="gridView2" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" runat="server" AllowPaging="True" OnPageIndexChanging="gvFuentes_PageIndexChanging" OnSelectedIndexChanged="gvFuentes_SelectedIndexChanged" OnSorting="gvFuentes_Sorting" PageSize="20">
+            <asp:GridView ID="gvFuentes" CssClass="gridView2" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" runat="server" AllowPaging="True" OnPageIndexChanging="gvFuentes_PageIndexChanging" OnSelectedIndexChanged="gvFuentes_SelectedIndexChanged" OnSorting="gvFuentes_Sorting" PageSize="20" BorderColor="Black" BorderStyle="Solid">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>

@@ -5,6 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Mapeos.Negocio;
+using System.Text;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Data;
+using System.IO;
+using System.Drawing;
+using System.Configuration;
+using System.Web.UI.HtmlControls;
 
 namespace Mapeos.Web
 {
@@ -294,5 +302,98 @@ namespace Mapeos.Web
                 }
             }
         }
+
+        protected void btnExportar_Click(object sender, EventArgs e)
+        {
+            StringBuilder builder = new StringBuilder();
+            string strFileName = "GridviewExcel_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString() + ".csv";
+            //builder.Append("RUT ,Nombre, UserName" + Environment.NewLine);
+            string header = gvUsuarios.HeaderRow.Cells[1].Text + "," + gvUsuarios.HeaderRow.Cells[2].Text + "," + gvUsuarios.HeaderRow.Cells[3].Text;
+            //builder.Append(gvUsuarios.HeaderRow.Cells[1].Text + Environment.NewLine);
+            builder.Append(header + Environment.NewLine);
+            foreach (GridViewRow row in gvUsuarios.Rows)
+            {
+                string rut = row.Cells[1].Text;
+                string nombre = row.Cells[2].Text;
+                string username = row.Cells[3].Text;
+                builder.Append(rut + "," + nombre + "," + username + Environment.NewLine);
+            }
+            Response.Clear();
+            Response.ContentType = "text/csv";
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + strFileName);
+            Response.ContentEncoding = Encoding.Unicode;
+            Response.BinaryWrite(Encoding.Unicode.GetPreamble());
+            Response.Write(builder.ToString());
+            Response.End();
+        }
+
+        public static string RemoverTildes(string texto)
+        {
+            string consignos = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+            string sinsignos = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+            StringBuilder textoSinAcentos = new StringBuilder(texto.Length);
+            int indexConAcento;
+            foreach (char caracter in texto)
+            {
+                indexConAcento = consignos.IndexOf(caracter);
+                if (indexConAcento > -1)
+                    textoSinAcentos.Append(sinsignos.Substring(indexConAcento, 1));
+                else
+                    textoSinAcentos.Append(caracter);
+            }
+            return textoSinAcentos.ToString();
+        }
+
+        public static string RemoveSpecialCharacters(string str)
+        {
+            string result = Regex.Replace(str, @"[^\w\d]", ",");
+
+            return result;
+        }
+
+        protected void btnExportarPrueba_Click(object sender, EventArgs e)
+        {
+            ExportarExcel("Informe.xls", gvUsuarios);
+        }
+
+        private void ExportarExcel(string nombreReporte, GridView wControl)
+        {
+            HttpResponse response = Response;
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            Page pageToRender = new Page();
+            HtmlForm form = new HtmlForm();
+            form.Controls.Add(wControl);
+
+            pageToRender.Controls.Add(form);
+            response.Clear();
+            response.Buffer = true;
+            response.ContentType = "application/ms-excel";
+            response.AddHeader("Content-Disposition", "attachment;filename=" + nombreReporte);
+
+            response.Charset = "UTF-8";
+            response.ContentEncoding = Encoding.Default;
+            pageToRender.RenderControl(htw);
+            response.Write(sw.ToString());
+            response.End();
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Verifies that the control is rendered */
+        }
+
+        protected void gvUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.Cells.Count > 0)
+            {
+                for (int i = 1; i > e.Row.Cells.Count; i++)
+                {
+                    e.Row.Cells[i].CssClass = "wordwrap";
+                }
+            }
+            e.Row.Cells[0].CssClass = "sno";
+        }
+
     }
 }

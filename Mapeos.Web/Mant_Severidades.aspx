@@ -23,46 +23,38 @@
              width: 280px;
              height: 35px;
          }
+         .auto-style21 {
+             width: 280px;
+             font-size: large;
+         }
      </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel2" runat="server">
         <table style="width:100%;">
             <tr>
-                <td class="auto-style19"><strong>Severidades</strong></td>
+                <td class="auto-style21"><strong>Severidades</strong></td>
                 <td class="auto-style14">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
-
                     <asp:Label ID="lblIdSeveridades" runat="server" Text="Id" Visible="False"></asp:Label>
-
                 </td>
                 <td>
-
                     <asp:TextBox ID="txtIdSeveridad" runat="server" CssClass="textBox" Enabled="False" Visible="False"></asp:TextBox>
-
                 </td>
-                <td>
-
-                    &nbsp;</td>
+                <td> &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style19">
-
                     <asp:Label ID="lblNumeroFuente" runat="server" Text="Número Fuente"></asp:Label>
-
                 </td>
                 <td>
-
                     <asp:TextBox ID="txtNumeroFuente" runat="server" MaxLength="5" CssClass="textBox" onkeypress="javascript:return solonumeros(event)" AutoPostBack="true" onpaste="return false"></asp:TextBox>
-
                 </td>
                 <td>
-
                     <asp:Label ID="lblMensaje" runat="server"></asp:Label>
-
                 </td>
             </tr>
             <tr>
@@ -72,8 +64,7 @@
                 <td class="auto-style15">
                     <asp:TextBox ID="txtData" runat="server"  MaxLength="5" CssClass="textBox2" onkeypress="javascript:return solonumeros(event)" AutoPostBack="true" onpaste="return false" ></asp:TextBox>
                 </td>
-                <td>
-                    &nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style19">
@@ -160,28 +151,20 @@
             </tr>
             <tr>
                 <td class="auto-style19">
-
                 </td>
                 <td>
-
                 </td>
-                <td>
-
-                    &nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style19">
-
                     <asp:Button ID="btAgregar" CssClass="button" runat="server" Text="Agregar" OnClick="btAgregar_Click" />
                     <asp:Button ID="btActualizar" CssClass="button"  runat="server" Text="Actualizar" OnClick="btActualizar_Click" />
                     <asp:Button ID="btCambiarEstado" CssClass="button" runat="server" Text="Cambiar" OnClick="btCambiar_Click" />
-
                 </td>
                 <td>
-
                 </td>
                 <td>
-
                 </td>
             </tr>
         </table>

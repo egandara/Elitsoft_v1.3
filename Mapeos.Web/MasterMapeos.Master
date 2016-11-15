@@ -28,9 +28,7 @@
             return true;
         }
         function solonumeros2(e) {
-
             var key;
-
             if (window.event) // IE
             {
                 key = e.keyCode;
@@ -39,11 +37,9 @@
             {
                 key = e.which;
             }
-
             if (key < 48 || key > 57 && key < 75 || key > 75 && key < 107 || key > 107)  {
                 return false;
             }
-
             return true;
         }
         function lbPrecedencias_DoubleClick() {
@@ -84,6 +80,20 @@
 
     </asp:ContentPlaceHolder>
     <style type="text/css">
+        .wordwrap
+        {
+            word-break:break-all;
+            word-wrap:break-word;
+            overflow:hidden;
+            width:150px;
+        }
+        .sno
+        {
+            word-break:break-all;
+            word-wrap:break-word;
+            overflow:hidden;
+            width:50px;
+        }
         .auto-style1 {
             width: 181px;
             height: 55px;
@@ -180,7 +190,7 @@
                         </span><span class="auto-style10">Perfil: </span><span class="auto-style11">
                         <asp:Label ID="lblTipoUsuario" runat="server" CssClass="auto-style8"></asp:Label>
                         <br class="auto-style8" />
-                        <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="auto-style8" />
+                        <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="auto-style8" OnClick="return confirm('¿Está seguro de cerrar la sesión?');" />
                         <br class="auto-style8" />
                         </span><span class="auto-style10">
                         <asp:LinkButton ID="linkCambioPass" runat="server" CSSClass="btn" OnClick="linkCambioPass_Click" >Cambiar clave</asp:LinkButton></span><span class="auto-style11">
@@ -190,9 +200,7 @@
                 </tr>
             </table>
         </asp:Panel>
-
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
         </asp:ContentPlaceHolder>
     </div>
     </form>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterMapeos.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="Mapeos.Web.Usuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterMapeos.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" EnableEventValidation ="false" Inherits="Mapeos.Web.Usuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Estilos/Estilos.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -64,7 +64,7 @@
                 <td class="auto-style20"><strong>Mantenedor de usuarios</strong></td>
                 <td class="auto-style17">&nbsp;</td>
                 <td rowspan="9" class="auto-style27">
-                    <asp:GridView ID="gvUsuarios" runat="server" CssClass="gridView" RowStyle-CssClass="rows" HeaderStyle-CssClass="header">
+                    <asp:GridView ID="gvUsuarios" runat="server" CssClass="gridView" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" BorderColor="Black" BorderStyle="Solid" OnRowDataBound="gvUsuarios_RowDataBound">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -73,6 +73,8 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <br />
+                    <asp:Button ID="btnExportarPrueba" runat="server" OnClick="btnExportarPrueba_Click" Text="Exportar" />
                 </td>
             </tr>
             <tr>
@@ -92,13 +94,13 @@
             <tr>
                 <td class="auto-style21">UserName</td>
                 <td class="auto-style18">
-                    <asp:TextBox ID="txtUsername" CssClass="textBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtUsername" CssClass="textBox2" AutoCompleteType="Disabled" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="textbox">Clave</td>
                 <td class="auto-style17">
-                    <asp:TextBox ID="txtClave" CssClass="textBox2" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="txtClave" CssClass="textBox2" AutoCompleteType="Disabled" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>

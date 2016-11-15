@@ -27,17 +27,10 @@ namespace Mapeos.Web
 
         protected void txtBuscarSeveridad_Click(object sender, EventArgs e)
         {
-            /*
-            if(IsPostBack){
-                BuscarSeveridad();
-            }*/
-
             if (txtBuscarSeveridades.Text == string.Empty)
             {
                 lblTesting.Text = "Ingrese un Número de Fuente";
-            }
-            else
-            {
+            }else{
                 BuscarSeveridad();
             }   
         }
@@ -58,14 +51,12 @@ namespace Mapeos.Web
             Button btn = (Button)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;
             string codigo = row.Cells[2].Text;
-
             Negocio.Severidades sever = new Negocio.Severidades()
             {
                 Id_Severidades = int.Parse(codigo), 
             };
             sever.Read();
             severidades = sever;
-
             Response.BufferOutput = true;
             Response.Redirect("Mant_Severidades.aspx");
         }
@@ -84,7 +75,5 @@ namespace Mapeos.Web
                 row.Cells[2].Visible = false;
             }
         }
-
-       
     }
 }

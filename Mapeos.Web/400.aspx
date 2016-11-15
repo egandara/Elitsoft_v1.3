@@ -10,12 +10,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
         <asp:Label ID="Label1" runat="server" Text="400 Error (bad request)"></asp:Label>
-    
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Inicio.aspx">Volver al Inicio</asp:HyperLink>
-    
     </div>
     </form>
 </body>
