@@ -12,6 +12,7 @@
                 <asp:TableHeaderCell>Not Null</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Descripción</asp:TableHeaderCell>
                 <asp:TableHeaderCell>_</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Add</asp:TableHeaderCell>
             </asp:TableRow>
         </asp:Table>
         <asp:Button ID="btnAdd" runat="server" Text="+" OnClick="btnAdd_Click" Font-Bold="True" Font-Size="Medium" />
@@ -19,6 +20,26 @@
         <br />
         <br />
         <br />
+        <br />
+        <table id="htmlTabla" style="width:100%;">
+            <tr>
+                <td>Nº</td>
+                <td>Nombre</td>
+                <td>Tipo</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+        </table>
         <br />
     </asp:Panel>
     

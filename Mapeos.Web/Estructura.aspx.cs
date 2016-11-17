@@ -27,7 +27,7 @@ namespace Mapeos.Web
             table.ID = "Table1";
             Page.Form.Controls.Add(table);
 
-            const int colsCount = 6;
+            const int colsCount = 7;
 
             for (int i = 0; i < rowsCount; i++)
             {
@@ -77,6 +77,10 @@ namespace Mapeos.Web
                             row.Cells.Add(cell);
                             break;
                         case 6:
+                            cell.Controls.Add(btn);
+                            row.Cells.Add(cell);
+                            break;
+                        case 7:
                             cell.Controls.Add(btn);
                             row.Cells.Add(cell);
                             break;

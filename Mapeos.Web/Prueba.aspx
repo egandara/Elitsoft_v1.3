@@ -8,6 +8,24 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="Scripts/script.js" type="text/javascript"></script>
     <script type="text/javascript">
+        $(document).on("click", ".deleteContact", function () {
+            $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls   
+        });
+        $(document).ready(function () {
+            $(document).on("click", ".classAdd", function () { //
+                var rowCount = $('.data-contact-person').length + 1;
+                var contactdiv = '<tr class="data-contact-person">' +
+                    '<td>' + rowCount + '</td>' +
+                    '<td><input type="text" name="f-name' + rowCount + '" class="form-control f-name01" /></td>' +
+                    '<td><select name="s-name"'+ rowCount +'> <option>Varchar</option><option>Int</option><option>Decimal</option><option>Char</option><option>Int</option>" name="email' + rowCount + '" class="form-control email01" /></td>' +
+                    '<td><input type="text" name="l-name' + rowCount + '" class="form-control l-name01" /></td>' +
+                    '<td><input type="checkbox" name="c-name' + rowCount + '" class="form-control l-name01" /></td>' +
+                    '<td><button type="button" id="btnAdd" name="f2-name' + rowCount +'" class="btn btn-xs btn-primary classAdd">+</button>' +
+                    '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">-</button></td>' +
+                    '</tr>';
+                $('#maintable').append(contactdiv); // Adding these controls to Main table class  
+            });
+        });
         $(document).ready(function () {
             $("select").searchable({
                 maxListSize: 200, // if list size are less than maxListSize, show them all
@@ -28,22 +46,47 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:DropDownList ID="myselect" runat="server">
-            <asp:ListItem>Select</asp:ListItem>
-            <asp:ListItem>venki</asp:ListItem>
-            <asp:ListItem>venu</asp:ListItem>
-            <asp:ListItem>charles ven</asp:ListItem>
-            <asp:ListItem>venuzila</asp:ListItem>
-            <asp:ListItem>veron philender</asp:ListItem>
-            <asp:ListItem>india</asp:ListItem>
-            <asp:ListItem>indianven</asp:ListItem>
-            <asp:ListItem>vesta</asp:ListItem>
-        </asp:DropDownList>
-        <br />
-        <asp:GridView ID="gvPruebas" runat="server" OnPageIndexChanging="gvPruebas_PageIndexChanging">
-        </asp:GridView>
-        <asp:Button ID="btnImportar" runat="server" OnClick="btnImportar_Click" Text="Importar" />
-        <br />
+       <h2>Basic Table</h2>  
+            <table class="table" id="maintable">  
+                <thead>  
+                    <tr id="somerow">  
+                        <th>Número</th>  
+                        <th>Nombre</th>  
+                        <th>Tipo</th>  
+                        <th>Descripción</th>
+                        <th>Null</th>
+                    </tr>  
+                </thead>  
+                <tbody>  
+                    <tr class="data-contact-person">  
+                        <td>
+                            1
+                        </td>
+                        <td>  
+                            <input type="text" name="f-name" class="form-control f-name01" />
+                        </td>  
+                        <td>  
+                            <select id="tipo">
+                                <option>Varchar</option>
+                                <option>Int</option>
+                                <option>Decimal</option>
+                                <option>Char</option>
+                                <option>Int</option>
+                            </select>
+                        </td>  
+                        <td>  
+                            <input type="text" name="l-name" class="form-control l-name01" />
+                        </td>
+                        <td>
+                            <input id="chk" type="checkbox" />
+                        </td>
+                        <td>  
+                            <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">+</button>  
+                        </td>
+                    </tr>  
+                </tbody>  
+            </table>  
+            <button type="button" id="btnSubmit" class="btn btn-primary btn-md pull-right btn-sm">Aceptar</button>  
     </div>
     </form>
 </body>
