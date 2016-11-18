@@ -13,13 +13,15 @@
         });
         $(document).ready(function () {
             $(document).on("click", ".classAdd", function () { //
+                var num = parseInt($('tr:last td:first').text());
                 var rowCount = $('.data-contact-person').length + 1;
                 var contactdiv = '<tr class="data-contact-person">' +
-                    '<td>' + rowCount + '</td>' +
+                    '<td>' + (num+1) + '</td>' +
                     '<td><input type="text" name="f-name' + rowCount + '" class="form-control f-name01" /></td>' +
                     '<td><select name="s-name"'+ rowCount +'> <option>Varchar</option><option>Int</option><option>Decimal</option><option>Char</option><option>Int</option>" name="email' + rowCount + '" class="form-control email01" /></td>' +
                     '<td><input type="text" name="l-name' + rowCount + '" class="form-control l-name01" /></td>' +
                     '<td><input type="checkbox" name="c-name' + rowCount + '" class="form-control l-name01" /></td>' +
+                    '<td><input type="checkbox" name="csel-name' + rowCount + '" class="form-control l-name01" /></td>' +
                     '<td><button type="button" id="btnAdd" name="f2-name' + rowCount +'" class="btn btn-xs btn-primary classAdd">+</button>' +
                     '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">-</button></td>' +
                     '</tr>';
@@ -55,6 +57,7 @@
                         <th>Tipo</th>  
                         <th>Descripción</th>
                         <th>Null</th>
+                        <th>Eliminar</th>
                     </tr>  
                 </thead>  
                 <tbody>  
@@ -79,6 +82,9 @@
                         </td>
                         <td>
                             <input id="chk" type="checkbox" />
+                        </td>
+                        <td>
+                            <input id="chkSel" name="csel-name" type="checkbox" />
                         </td>
                         <td>  
                             <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">+</button>  
