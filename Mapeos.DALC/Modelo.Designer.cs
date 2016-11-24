@@ -272,6 +272,22 @@ namespace Mapeos.DALC
             }
         }
         private ObjectSet<tipo_cambio> _tipo_cambio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<prueba> prueba
+        {
+            get
+            {
+                if ((_prueba == null))
+                {
+                    _prueba = base.CreateObjectSet<prueba>("prueba");
+                }
+                return _prueba;
+            }
+        }
+        private ObjectSet<prueba> _prueba;
 
         #endregion
 
@@ -371,6 +387,14 @@ namespace Mapeos.DALC
         public void AddTotipo_cambio(tipo_cambio tipo_cambio)
         {
             base.AddObject("tipo_cambio", tipo_cambio);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet prueba. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToprueba(prueba prueba)
+        {
+            base.AddObject("prueba", prueba);
         }
 
         #endregion
@@ -1844,6 +1868,91 @@ namespace Mapeos.DALC
                 }
             }
         }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="proyectoModel", Name="prueba")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class prueba : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto prueba.
+        /// </summary>
+        /// <param name="id_prueba">Valor inicial de la propiedad id_prueba.</param>
+        /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
+        public static prueba Createprueba(global::System.Int32 id_prueba, global::System.String nombre)
+        {
+            prueba prueba = new prueba();
+            prueba.id_prueba = id_prueba;
+            prueba.nombre = nombre;
+            return prueba;
+        }
+
+        #endregion
+
+        #region Propiedades simples
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_prueba
+        {
+            get
+            {
+                return _id_prueba;
+            }
+            set
+            {
+                if (_id_prueba != value)
+                {
+                    Onid_pruebaChanging(value);
+                    ReportPropertyChanging("id_prueba");
+                    _id_prueba = StructuralObject.SetValidValue(value, "id_prueba");
+                    ReportPropertyChanged("id_prueba");
+                    Onid_pruebaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_prueba;
+        partial void Onid_pruebaChanging(global::System.Int32 value);
+        partial void Onid_pruebaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                if (_nombre != value)
+                {
+                    OnnombreChanging(value);
+                    ReportPropertyChanging("nombre");
+                    _nombre = StructuralObject.SetValidValue(value, false, "nombre");
+                    ReportPropertyChanged("nombre");
+                    OnnombreChanged();
+                }
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
 
         #endregion
 

@@ -52,7 +52,7 @@
             <table class="table" id="maintable">  
                 <thead>  
                     <tr id="somerow">  
-                        <th>Número</th>  
+                        <th>Id</th>  
                         <th>Nombre</th>  
                         <th>Tipo</th>  
                         <th>Descripción</th>

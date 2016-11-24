@@ -12,6 +12,7 @@
           <EntitySet Name="historico" EntityType="proyectoModel.Store.historico" store:Type="Tables" Schema="proyecto" />
           <EntitySet Name="login" EntityType="proyectoModel.Store.login" store:Type="Tables" Schema="proyecto" />
           <EntitySet Name="periodicidad" EntityType="proyectoModel.Store.periodicidad" store:Type="Tables" Schema="proyecto" />
+          <EntitySet Name="prueba" EntityType="proyectoModel.Store.prueba" store:Type="Tables" Schema="proyecto" />
           <EntitySet Name="relacion" EntityType="proyectoModel.Store.relacion" store:Type="Tables" Schema="proyecto" />
           <EntitySet Name="severidades" EntityType="proyectoModel.Store.severidades" store:Type="Tables" Schema="proyecto" />
           <EntitySet Name="tipo_calidad" EntityType="proyectoModel.Store.tipo_calidad" store:Type="Tables" Schema="proyecto" />
@@ -126,6 +127,14 @@
           </Key>
           <Property Name="id_periodicidad" Type="int" Nullable="false" />
           <Property Name="nombre_periodicidad" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="prueba">
+          <Key>
+            <PropertyRef Name="id_prueba" />
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="id_prueba" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="relacion">
           <Key>
@@ -375,6 +384,7 @@
             <End Role="tipo_calidad" EntitySet="tipo_calidad" />
             <End Role="severidades" EntitySet="severidades" />
           </AssociationSet>
+          <EntitySet Name="prueba" EntityType="proyectoModel.prueba" />
         </EntityContainer>
         <EntityType Name="desc_fuente">
           <Key>
@@ -649,6 +659,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="prueba">
+          <Key>
+            <PropertyRef Name="id_prueba" />
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Type="Int32" Name="id_prueba" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -781,6 +799,14 @@
               <MappingFragment StoreEntitySet="tipo_cambio">
                 <ScalarProperty Name="nombre_cambio" ColumnName="nombre_cambio" />
                 <ScalarProperty Name="id_tipo_cambio" ColumnName="id_tipo_cambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prueba">
+            <EntityTypeMapping TypeName="proyectoModel.prueba">
+              <MappingFragment StoreEntitySet="prueba">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_prueba" ColumnName="id_prueba" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

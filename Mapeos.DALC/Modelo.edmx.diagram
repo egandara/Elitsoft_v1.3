@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="448f5c386a3b4801a20ef2d4a33ebdd6" Name="Diagrama1">
+      <Diagram DiagramId="448f5c386a3b4801a20ef2d4a33ebdd6" Name="Diagrama1" ZoomLevel="74">
         <EntityTypeShape EntityType="proyectoModel.desc_fuente" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.estructura" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.extractor" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
@@ -22,12 +22,13 @@
         <AssociationConnector Association="proyectoModel.severidades_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="proyectoModel.login_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="proyectoModel.relacion_ibfk_2" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="proyectoModel.historico" Width="1.5" PointX="4.5429486225093472" PointY="5.3289037967700992" />
+        <EntityTypeShape EntityType="proyectoModel.historico" Width="1.5" PointX="8.25" PointY="6.5" />
         <EntityTypeShape EntityType="proyectoModel.tipo_calidad" Width="1.5" PointX="10.206981399192932" PointY="1.7147618987200604" />
         <EntityTypeShape EntityType="proyectoModel.tipo_cambio" Width="1.5" PointX="2.2982508290085248" PointY="5.8631841567639187" />
         <AssociationConnector Association="proyectoModel.FK_Historico_Tipo" />
         <AssociationConnector Association="proyectoModel.historico_ibfk_1" />
         <AssociationConnector Association="proyectoModel.severidades_ibfk_2" />
+        <EntityTypeShape EntityType="proyectoModel.prueba" Width="1.5" PointX="0.089914239984897074" PointY="8.5339205155772717" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -43,6 +43,7 @@
     <Compile Include="Colecciones.cs" />
     <Compile Include="CommonBC.cs" />
     <Compile Include="Encriptacion.cs" />
+    <Compile Include="Estructura.cs" />
     <Compile Include="Extractor.cs" />
     <Compile Include="Fuentes.cs" />
     <Compile Include="FuentesRelacionadas.cs" />
